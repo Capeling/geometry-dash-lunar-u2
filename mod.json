@@ -1,0 +1,38 @@
+{
+	"geode": "2.0.0-beta.24",
+	"gd": {
+		"win": "2.204",
+		"android": "2.205"
+	},
+	"version": "v2.0.0-beta.7",
+	"id": "capeling.geometry-dash-lunar",
+	"name": "Geometry Dash: Lunar",
+	"developers": [
+		"GenaMorphosis",
+		"Capeling"
+	],
+	"early-load": true,
+	"description": "",
+	"resources": {
+		"files": [
+			"resources/levels/*.txt",
+			"resources/songs/*.mp3",
+			"resources/songs/normal/*.mp3",
+			"resources/plat/sfx/*.ogg",
+			"resources/plat/songs/*.ogg",
+			"resources/icons/*.png",
+			"resources/icons/*.plist",
+			"resources/icons/robot_02/*.png",
+			"resources/icons/robot_02/*.plist"
+		],
+		"spritesheets": {
+			"LunarSheet": [
+				"resources/LunarSheet/*.png"
+			]
+		},
+		"sprites": [
+			"resources/dialogue/*.png",
+			"resources/sprites/*.png"
+		]
+	}
+}
