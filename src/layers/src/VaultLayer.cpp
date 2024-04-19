@@ -83,14 +83,35 @@ void VaultLayer::onSubmit(CCObject*) {
     std::string response = getMessage();
     std::string lower;
 
+    auto GM = GameManager::sharedState();
+    auto AM = AchievementManager::sharedState();
+
     for(auto elem : m_textInput->getString())
        lower += std::tolower(elem);
 
-    auto AM = AchievementManager::sharedState();
-    if(lower == "throne room") {
+    m_textInput->setString("");
+
+    if(std::string_view(lower) == "throne room") {
 
     }
-    m_textInput->setString("");
+
+    if(std::string_view(lower) == std::string_view("attention") && !AM->isAchievementEarned("geometry.ach.lunar.vault01")) {
+        response = "Hmmm..?";
+        GM->reportAchievementWithID("geometry.ach.lunar.vault01", 100, false);
+        return updateMessageLabel(response);
+    }
+
+    if(std::string_view(lower) == std::string_view("lucky") && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
+        response = "It\'s your lucky day!";
+        GM->reportAchievementWithID("geometry.ach.lunar.vault02", 100, false);
+        return updateMessageLabel(response);
+    }
+
+    if(std::string_view(lower) == std::string_view("stellar") && !AM->isAchievementEarned("geometry.ach.lunar.vault03")) {
+        response = "Look into the stars...";
+        GM->reportAchievementWithID("geometry.ach.lunar.vault03", 100, false);
+        return updateMessageLabel(response);
+    }
 
     updateMessageLabel(response);
 }

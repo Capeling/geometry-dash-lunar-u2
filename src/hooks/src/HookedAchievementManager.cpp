@@ -31,6 +31,10 @@ void HookedAchievementManager::addManualAchievements() {
 
     AchievementManager::addAchievement("geometry.ach.level10a", "Light Speed", "Completed \'Ultrasonic\' in Practice mode", "Complete \'Ultrasonic\' in Practice mode", "icon_23", 1);
     AchievementManager::addAchievement("geometry.ach.level10b", "Ultrasonic!", "Completed \'Ultrasonic\' in Normal mode", "Complete \'Ultrasonic\' in Normal mode", "swing_02", 1);
+    
+    AchievementManager::addAchievement("geometry.ach.lunar.vault01", "Attention, please!", "Found the secret", "A secret is required", "icon_28", 0);
+    AchievementManager::addAchievement("geometry.ach.lunar.vault02", "Bingo!", "Found the secret", "A secret is required", "icon_29", 0);
+    AchievementManager::addAchievement("geometry.ach.lunar.vault03", "Among the stars", "Found the secret", "A secret is required", "ship_02", 0);
 
     AchievementManager::addAchievement("geometry.ach.demon01", "Reflex Champion", "Completed a Demon difficulty level in Normal mode", "Complete a Demon difficulty level in Normal mode", "icon_30", 1);
 
@@ -82,6 +86,7 @@ void HookedAchievementManager::addManualAchievements() {
     AchievementManager::addAchievement("geometry.ach.secret03", "Godlike!", "Destroyed 200 players", "A secret is required", "icon_39", 0);
     AchievementManager::addAchievement("geometry.ach.secret03b", "Wickedsick!", "Destroyed 500 players", "A secret is required", "ball_12", 0);
     AchievementManager::addAchievement("geometry.ach.secret04", "Master Detective", "Found the hidden coin", "A hidden treasure is required", "color2_21", 0);
+
 
     #ifdef GEODE_IS_WINDOWS
     AchievementManager::addAchievement("geometry.ach.steam01", "Steamrolling!", "Completed level 1-3 in Normal mode (Steam Exclusive)", "Complete level 1-3 in Normal mode (Steam Exclusive)", "icon_47", 0);

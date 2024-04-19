@@ -1,19 +1,19 @@
 #include "../headers/HookedLevelTools.h"
 
 bool HookedLevelTools::verifyLevelIntegrity(gd::string verifyString, int levelID) {
-    bool isValid = true;
+    bool isValid = false;
     switch(levelID) {
         case 1:
-            if(verifyString.size() == 1021811) isValid = true;
+            if(verifyString.size() == 1029093) isValid = true;
             break;
         case 2:
-            if(verifyString.size() == 2161581) isValid = true;
+            if(verifyString.size() == 2161744) isValid = true;
             break;
         case 3:
-            if(verifyString.size() == 3872970) isValid = true;
+            if(verifyString.size() == 3873233) isValid = true;
             break;
         case 4:
-            if(verifyString.size() == 4413382) isValid = true;
+            if(verifyString.size() == 4414142) isValid = true;
             break;
         default:
             isValid = true;
@@ -148,7 +148,7 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_coins = 3;
             break;
         case 5:
-            setLevelInfo(level, 6, GJDifficulty::Harder, 0, 0); //power glove
+            setLevelInfo(level, 6, GJDifficulty::Harder, 0, 15851); //power glove
             level->m_levelName = getAudioTitle(44);
             level->m_audioTrack = 44;
             level->m_coins = 3;

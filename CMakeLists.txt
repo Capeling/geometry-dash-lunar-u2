@@ -7,7 +7,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 project(geometry-dash-lunar VERSION 1.0.0)
 
 # Check for debug build
-option(ENABLE_DEBUG "Debug mode" ON)
+option(ENABLE_DEBUG "Debug mode" OFF)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}asdf" STREQUAL "asdf" OR ENABLE_DEBUG)
     set(LUNAR_IS_DEBUG ON)
