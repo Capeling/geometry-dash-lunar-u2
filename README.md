@@ -4,10 +4,10 @@ Geometry Dash: Lunar is a fanmade Geometry Dash spinoff containing 6 brand new l
 
 A non-copyright version of the mod is available to download on the [GitHub](https://github.com/Capeling/geometry-dash-lunar)
 
-This mod uses it's own save file so that your save data will not be modified, your actual save data will not be deleted and will be loaded from as soon as you turn off the mod.
+This mod uses its own save file so your save data will not be modified. Your actual save data will not be deleted, but kept for when you turn the mod off. Please remember to save your data beforehand, though.
 
 ## **Credits**
 - Developer: Capeling
 - Levels: GenaMorphosis 
 - Icons (Update 1): FatzFries 
-- Icons (Update 2): CyanFlower
+- Icons (Update 2): cyanflower
