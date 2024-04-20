@@ -7,7 +7,8 @@ A non-copyright version of the mod is available to download on the [GitHub](http
 This mod uses its own save file so your save data will not be modified. Your actual save data will not be deleted, but kept for when you turn the mod off. Please remember to save your data beforehand, though.
 
 ## **Credits**
-- Developer: Capeling
-- Levels: GenaMorphosis 
-- Icons (Update 1): FatzFries 
-- Icons (Update 2): cyanflower
+- Capeling: Mod Developer, Levels
+- GenaMorphosis: Levels
+- Andrexel: Levels
+- FatzFries: "Space Battle" Boss Design, Icons (Cube 5 - 12)
+- cyanflower: Icons
