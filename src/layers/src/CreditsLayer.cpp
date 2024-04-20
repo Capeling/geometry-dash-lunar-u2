@@ -55,7 +55,8 @@ void CreditsLayer::setupCreditsTab() {
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 141, 76, 40, 40, true, 18226543);
     auto genaUser = CreditNode::create("GenaMorphosis", "Levels", 467, 6, 3, 1, true, 10026833);
 
-    auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
+    //auto andrexelUser = CreditNode::create("?", "Levels", 114, 8, 11, 70, true, 8327873);
+    auto andrexelUser = CreditNode::create("?", "Levels", 1, 1, 1, 1, true, 72);
     auto fatzUser = CreditNode::create("FatzFries", "\"Space Battle\" Boss Design\nIcons (Cube 5 - 12)", 235, 18, 12, 12, true, 14007342);
     auto cyanUser = CreditNode::create("CyanFlower", "Icons", 2, 12, 3, 3, true, 21113321);
 
@@ -96,10 +97,10 @@ void CreditsLayer::setupLevelsTab() {
     auto powerGloveLevel = LevelNode::create("Power Glove", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 44);
 
     auto paybackLevel = LevelNode::create("Payback", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 45);
-    auto hyperchargedLevel = LevelNode::create("Hypercharged", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 46);
-    auto reverieLevel = LevelNode::create("Reverie", "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", false, 47);
-    auto groundZeroLevel = LevelNode::create("Ground Zero", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 48);
-    auto ultrasonicLevel = LevelNode::create("Ultrasonic", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 49);
+    auto hyperchargedLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 46);
+    auto reverieLevel = LevelNode::create("No...", "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", false, 47);
+    auto groundZeroLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 48);
+    auto ultrasonicLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 49);
 
     CCArray* row1LevelArray = CCArray::create();
     CCArray* row2LevelArray = CCArray::create();
