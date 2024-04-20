@@ -184,6 +184,9 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_coins = 3;
             break;
     }
+    if (!loaded) {
+        level->m_levelString = LocalLevelManager::sharedState()->getMainLevelString(levelID);
+    }
     level->m_levelID = levelID;
     return level;
 }
