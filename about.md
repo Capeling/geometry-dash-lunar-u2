@@ -1,15 +1,13 @@
 # **Geometry Dash: Lunar**
 
-# ***PRIVATE BUILD, DO NOT LEAK***
+Geometry Dash: Lunar is a fanmade Geometry Dash spinoff containing 6 brand new levels, 4 new platformer levels, new icons, new achievements and more!
 
-This mod changes your game to fanmade spinoff which includes 4 new robtop-styled levels and 8 new icons. 
+A non-copyright version of the mod is available to download on the [GitHub](https://github.com/Capeling/geometry-dash-lunar)
 
-This mod uses it's own save file, so you won't have any stats changes on your account
-
-# ***PRIVATE BUILD, DO NOT LEAK***
+This mod uses it's own save file so that your save data will not be modified, your actual save data will not be deleted and will be loaded from as soon as you turn off the mod.
 
 ## **Credits**
 - Developer: Capeling
 - Levels: GenaMorphosis 
-- Icons: FatzFries
+- Icons (Update 1): FatzFries 
 - Icons (Update 2): CyanFlower

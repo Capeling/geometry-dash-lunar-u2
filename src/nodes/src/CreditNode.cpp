@@ -21,6 +21,11 @@ bool CreditNode::init(const char* name, const char* reason, int iconID, int colo
     m_userName->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
     m_userName->limitLabelWidth(180.f, 0.6f, 0.f);
 
+    std::string lower;
+
+    for(auto elem : std::string(name))
+       lower += std::tolower(elem);
+
     m_userButton = CCMenuItemSpriteExtra::create(m_userName, this, menu_selector(CreditNode::onUser));
 
     m_userIcon = SimplePlayer::create(iconID);
@@ -50,6 +55,7 @@ bool CreditNode::init(const char* name, const char* reason, int iconID, int colo
     addChild(m_userReason);
 
     m_accountID = accountID;
+    setID(""_spr + lower + "-credit-node");
 
     return true;
 }
