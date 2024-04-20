@@ -55,10 +55,9 @@ void CreditsLayer::setupCreditsTab() {
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 141, 76, 40, 40, true, 18226543);
     auto genaUser = CreditNode::create("GenaMorphosis", "Levels", 467, 6, 3, 1, true, 10026833);
 
-    //auto andrexelUser = CreditNode::create("?", "Levels", 114, 8, 11, 70, true, 8327873);
-    auto andrexelUser = CreditNode::create("?", "Levels", 1, 1, 1, 1, true, 72);
+    auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
     auto fatzUser = CreditNode::create("FatzFries", "\"Space Battle\" Boss Design\nIcons (Cube 5 - 12)", 235, 18, 12, 12, true, 14007342);
-    auto cyanUser = CreditNode::create("CyanFlower", "Icons", 2, 12, 3, 3, true, 21113321);
+    auto cyanUser = CreditNode::create("cyanflower", "Icons", 2, 12, 3, 3, true, 21113321);
 
     CCArray* row1CreditArray = CCArray::create();
     CCArray* row2CreditArray = CCArray::create();
@@ -91,16 +90,16 @@ void CreditsLayer::setupLevelsTab() {
     levelsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
     auto activeLevel = LevelNode::create("Active", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", false, 40);
-    auto thunderZoneLevel = LevelNode::create("ThunderZone", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 41);
+    auto thunderZoneLevel = LevelNode::create("Thunderzone", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 41);
     auto earthSplitterLevel = LevelNode::create("Earthsplitter", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 42);
     auto spaceBattleLevel = LevelNode::create("Space Battle", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", false, 43);
     auto powerGloveLevel = LevelNode::create("Power Glove", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 44);
 
     auto paybackLevel = LevelNode::create("Payback", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 45);
-    auto hyperchargedLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 46);
-    auto reverieLevel = LevelNode::create("No...", "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", false, 47);
-    auto groundZeroLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 48);
-    auto ultrasonicLevel = LevelNode::create("No...", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 49);
+    auto hyperchargedLevel = LevelNode::create("Hypercharged", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 46);
+    auto reverieLevel = LevelNode::create("Reverie", "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", false, 47);
+    auto groundZeroLevel = LevelNode::create("Ground Zero", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 48);
+    auto ultrasonicLevel = LevelNode::create("Ultrasonic", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 49);
 
     CCArray* row1LevelArray = CCArray::create();
     CCArray* row2LevelArray = CCArray::create();
