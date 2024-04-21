@@ -27,13 +27,13 @@ void HookedLevelPage::updateDynamicPage(GJGameLevel* level) {
 
         towerSpr->setDisplayFrame(SFC->spriteFrameByName("GJL_secretDoor_001.png"_spr));
         towerSpr->setScale(1.1);
-        towerSpr->setContentSize({99, 162});
+        //towerSpr->setContentSize({99, 162});
         towerTextSpr->setVisible(false);
 
         for(int i = 0; i < 3; i++) {
             auto node = getChildOfType<CCParticleSystemQuad>(towerSpr, i);
             //node->setPosition(ccp(node->getPositionX() - 1, node->getPositionY() + 7));
-            node->setPosition(ccp((towerSpr->getContentWidth() / 2) + 6, (towerSpr->getContentHeight() / 2) + 1));
+            node->setPosition(towerSpr->getScaledContentSize() / 2.2);
         }
     }
 }
