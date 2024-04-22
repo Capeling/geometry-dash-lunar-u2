@@ -55,6 +55,7 @@ void CreditsLayer::setupCreditsTab() {
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 141, 76, 40, 40, true, 18226543);
     auto genaUser = CreditNode::create("GenaMorphosis", "Levels", 467, 6, 3, 1, true, 10026833);
 
+    //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
     auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
     auto fatzUser = CreditNode::create("FatzFries", "\"Space Battle\" Boss Design\nIcons (Cube 5 - 12)", 235, 18, 12, 12, true, 14007342);
     auto cyanUser = CreditNode::create("cyanflower", "Icons", 2, 12, 3, 3, true, 21113321);
@@ -65,6 +66,7 @@ void CreditsLayer::setupCreditsTab() {
     row1CreditArray->addObject(capeUser);
     row1CreditArray->addObject(genaUser);
 
+    //row2CreditArray->addObject(robtopUser);
     row2CreditArray->addObject(andrexelUser);
     row2CreditArray->addObject(fatzUser);
     row2CreditArray->addObject(cyanUser);
@@ -72,6 +74,7 @@ void CreditsLayer::setupCreditsTab() {
     m_creditsLayer->addChild(capeUser);
     m_creditsLayer->addChild(genaUser);
 
+    //m_creditsLayer->addChild(robtopUser);
     m_creditsLayer->addChild(andrexelUser);
     m_creditsLayer->addChild(fatzUser);
     m_creditsLayer->addChild(cyanUser);
@@ -89,17 +92,17 @@ void CreditsLayer::setupLevelsTab() {
     auto levelsLabel = CCLabelBMFont::create("Levels", "bigFont.fnt");
     levelsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
-    auto activeLevel = LevelNode::create("Active", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", false, 40);
-    auto thunderZoneLevel = LevelNode::create("Thunderzone", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 41);
-    auto earthSplitterLevel = LevelNode::create("Earthsplitter", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 42);
-    auto spaceBattleLevel = LevelNode::create("Space Battle", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", false, 43);
-    auto powerGloveLevel = LevelNode::create("Power Glove", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", false, 44);
+    auto activeLevel = LevelNode::create(40, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", 5, IconType::Cube);
+    auto thunderZoneLevel = LevelNode::create(41, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 6, IconType::Cube);
+    auto earthSplitterLevel = LevelNode::create(42, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 7, IconType::Cube);
+    auto spaceBattleLevel = LevelNode::create(43, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", 8, IconType::Cube);
+    auto powerGloveLevel = LevelNode::create(44, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 13, IconType::Cube);
 
-    auto paybackLevel = LevelNode::create("Payback", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 45);
-    auto hyperchargedLevel = LevelNode::create("Hypercharged", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 46);
-    auto reverieLevel = LevelNode::create("Reverie", "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", false, 47);
-    auto groundZeroLevel = LevelNode::create("Ground Zero", "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", false, 48);
-    auto ultrasonicLevel = LevelNode::create("Ultrasonic", "<cg>GenaMorphosis</c>: (Layout, Deco)", false, 49);
+    auto paybackLevel = LevelNode::create(45, "<cg>GenaMorphosis</c>: (Layout, Deco)", 14, IconType::Cube);
+    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", 15, IconType::Cube);
+    auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", 16, IconType::Cube);
+    auto groundZeroLevel = LevelNode::create(48, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube);
+    auto ultrasonicLevel = LevelNode::create(49, "<cg>GenaMorphosis</c>: (Layout, Deco)", 2, IconType::Swing);
 
     CCArray* row1LevelArray = CCArray::create();
     CCArray* row2LevelArray = CCArray::create();

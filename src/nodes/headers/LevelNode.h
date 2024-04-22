@@ -3,15 +3,15 @@
 
 class LevelNode : public CCNode {
 protected:
-    std::string m_levelName = "";
     std::string m_infoDesc = "";
     int m_audioID = 0;
     
+    SimplePlayer* m_levelIcon = nullptr;
     CCMenuItemSpriteExtra* m_infoBtn = nullptr;
     CCLabelBMFont* m_levelLabel = nullptr;
     $override
-    bool init(std::string levelName, std::string infoDesc, bool flipped, int audioID);
+    bool init(int audioID, std::string infoDesc, int iconID, IconType iconType);
 public:
-    static LevelNode* create(std::string levelName, std::string infoDesc, bool flipped, int audioID);
+    static LevelNode* create(int audioID, std::string infoDesc, int iconID, IconType iconType);
     void onInfo(CCObject* sender);
 };

@@ -1,8 +1,8 @@
 #include "../headers/LevelNode.h"
 
-LevelNode* LevelNode::create(std::string levelName, std::string infoDesc, bool flipped, int audioID) {
+LevelNode* LevelNode::create(int audioID, std::string infoDesc, int iconID, IconType iconType) {
     auto ret = new LevelNode();
-    if(ret && ret->init(levelName, infoDesc, flipped, audioID)) {
+    if(ret && ret->init(audioID, infoDesc, iconID, iconType)) {
         ret->autorelease();
         return ret;
     }
@@ -10,20 +10,23 @@ LevelNode* LevelNode::create(std::string levelName, std::string infoDesc, bool f
     return nullptr;
 }
 
-bool LevelNode::init(std::string levelName, std::string infoDesc, bool flipped, int audioID) {
+bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType iconType) {
     if(!CCNode::init())
         return false;
 
-    m_levelLabel = CCLabelBMFont::create(levelName.c_str(), "goldFont.fnt");
+    m_levelIcon = SimplePlayer::create(1);
+    m_levelIcon->updatePlayerFrame(iconID, iconType);
+    m_levelIcon->setColor(GameManager::get()->colorForIdx(17));
+    m_levelIcon->setSecondColor(GameManager::get()->colorForIdx(12));
+    m_levelIcon->setScale(0.8f);
+    addChild(m_levelIcon);
+
+    m_levelLabel = CCLabelBMFont::create(LevelTools::getAudioTitle(audioID).c_str(), "goldFont.fnt");
+    m_levelLabel->setPosition({20.f, 0.f});
     m_levelLabel->setAnchorPoint({0.0f, 0.5f});
     m_levelLabel->setScale(0.8f);
-    if(flipped) m_levelLabel->setPositionX(8);
+    m_levelLabel->limitLabelWidth(125.f, 0.8f, 0.f);
     addChild(m_levelLabel);
-
-    std::string lower;
-
-    for(auto elem : std::string(levelName))
-       lower += std::tolower(elem);
 
     auto infoSpr = CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png");
     infoSpr->setScale(0.5f);
@@ -31,19 +34,14 @@ bool LevelNode::init(std::string levelName, std::string infoDesc, bool flipped, 
     m_infoBtn = CCMenuItemSpriteExtra::create(infoSpr, this, menu_selector(LevelNode::onInfo));
     
     auto buttonMenu = CCMenu::create();
-    if(flipped) {
-        buttonMenu->setPosition(0, -3);
-    } else {
-        buttonMenu->setPosition(m_levelLabel->getPositionX() + m_levelLabel->getScaledContentSize().width + 8, -2.5);
-    }
+    buttonMenu->setPosition(m_levelLabel->getPositionX() + m_levelLabel->getScaledContentSize().width + 8, -2.5);
     buttonMenu->addChild(m_infoBtn);
     addChild(buttonMenu);
 
-    m_levelName = levelName;
-    m_infoDesc = infoDesc;
     m_audioID = audioID;
+    m_infoDesc = infoDesc;
 
-    setID(""_spr + lower + "-level-node");
+    setID("audio-"_spr + std::to_string(audioID) + "-level-node");
 
     return true;
 }
@@ -52,5 +50,5 @@ void LevelNode::onInfo(CCObject* sender) {
 
     auto string = fmt::format("{}\n\n<cj>Song</c>: {} by <cp>{}</c>", m_infoDesc, LevelTools::getAudioTitle(m_audioID), LevelTools::nameForArtist(LevelTools::artistForAudio(m_audioID)));
 
-    FLAlertLayer::create(m_levelName.c_str(), string.c_str(), "OK")->show();
+    FLAlertLayer::create(LevelTools::getAudioTitle(m_audioID).c_str(), string.c_str(), "OK")->show();
 }
