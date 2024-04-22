@@ -15,6 +15,19 @@ class $modify(GameManager) {
 		auto ret = GameManager::sheetNameForIcon(iconID, iconType);
 		return ret;
 	}
+	cocos2d::CCTexture2D* loadIcon(int iconID, int iconType, int _idk) {
+		if(iconID == 2) {
+			if(iconType == 1 || iconType == 2 || iconType == 3 || iconType == 7) {
+				return nullptr;
+			}
+		}
+
+		for(int i = 5; i < 29; i++) {
+			if(iconID == i && iconType == 0) return nullptr;
+		}
+
+		return GameManager::loadIcon(iconID, iconType, _idk);
+	}
 };
  
 class $modify(EditorPauseLayerExt, EditorPauseLayer) {

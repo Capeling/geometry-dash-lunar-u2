@@ -53,7 +53,8 @@ void CreditsLayer::setupCreditsTab() {
     creditsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 141, 76, 40, 40, true, 18226543);
-    auto genaUser = CreditNode::create("GenaMorphosis", "Levels", 467, 6, 3, 1, true, 10026833);
+    auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 467, 6, 3, 1, true, 10026833);
+    auto toastUser = CreditNode::create("RealToastGD", "Levels", 275, 6, 3, 0, true, 26666582);
 
     //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
     auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
@@ -65,6 +66,7 @@ void CreditsLayer::setupCreditsTab() {
 
     row1CreditArray->addObject(capeUser);
     row1CreditArray->addObject(genaUser);
+    row1CreditArray->addObject(toastUser);
 
     //row2CreditArray->addObject(robtopUser);
     row2CreditArray->addObject(andrexelUser);
@@ -73,6 +75,7 @@ void CreditsLayer::setupCreditsTab() {
 
     m_creditsLayer->addChild(capeUser);
     m_creditsLayer->addChild(genaUser);
+    m_creditsLayer->addChild(toastUser);
 
     //m_creditsLayer->addChild(robtopUser);
     m_creditsLayer->addChild(andrexelUser);
@@ -81,7 +84,7 @@ void CreditsLayer::setupCreditsTab() {
 
     m_creditsLayer->addChild(creditsLabel);
 
-    GameToolbox::alignItemsHorisontally(row1CreditArray, 125.f, ccp(winSize.width / 2, m_bgSprite->getContentHeight() - 70), false);
+    GameToolbox::alignItemsHorisontally(row1CreditArray, 115.f, ccp(winSize.width / 2, m_bgSprite->getContentHeight() - 70), false);
     GameToolbox::alignItemsHorisontally(row2CreditArray, 115.f, ccp(winSize.width / 2, m_bgSprite->getContentHeight() - 170), false);
 }
 
@@ -92,16 +95,16 @@ void CreditsLayer::setupLevelsTab() {
     auto levelsLabel = CCLabelBMFont::create("Levels", "bigFont.fnt");
     levelsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
-    auto activeLevel = LevelNode::create(40, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", 5, IconType::Cube);
+    auto activeLevel = LevelNode::create(38, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", 5, IconType::Cube);
     auto thunderZoneLevel = LevelNode::create(41, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 6, IconType::Cube);
     auto earthSplitterLevel = LevelNode::create(42, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 7, IconType::Cube);
     auto spaceBattleLevel = LevelNode::create(43, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", 8, IconType::Cube);
     auto powerGloveLevel = LevelNode::create(44, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 13, IconType::Cube);
 
     auto paybackLevel = LevelNode::create(45, "<cg>GenaMorphosis</c>: (Layout, Deco)", 14, IconType::Cube);
-    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", 15, IconType::Cube);
+    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 15, IconType::Cube);
     auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", 16, IconType::Cube);
-    auto groundZeroLevel = LevelNode::create(48, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube);
+    auto groundZeroLevel = LevelNode::create(48, "<cg>RealToastGD</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube);
     auto ultrasonicLevel = LevelNode::create(49, "<cg>GenaMorphosis</c>: (Layout, Deco)", 2, IconType::Swing);
 
     CCArray* row1LevelArray = CCArray::create();
