@@ -141,7 +141,9 @@ std::string VaultLayer::getMessage() {
         m_messageIndex++;
         return message;
     } else {
-        return getThreadMessage(m_messageIndex++, m_messageID);
+        auto ret = getThreadMessage(m_messageIndex++, m_messageID);
+        if(ret == "") ret = getBasicMessage();
+        return ret;
     }
 }
 
