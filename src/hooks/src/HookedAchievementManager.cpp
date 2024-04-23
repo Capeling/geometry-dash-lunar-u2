@@ -32,11 +32,13 @@ void HookedAchievementManager::addManualAchievements() {
     AchievementManager::addAchievement("geometry.ach.level10a", "Light Speed", "Completed \'Ultrasonic\' in Practice mode", "Complete \'Ultrasonic\' in Practice mode", "icon_23", 1);
     AchievementManager::addAchievement("geometry.ach.level10b", "Ultrasonic!", "Completed \'Ultrasonic\' in Normal mode", "Complete \'Ultrasonic\' in Normal mode", "swing_02", 1);
     
+    AchievementManager::addAchievement("geometry.ach.lunar.demoncoin01", "Ultimate Ultrasonic!", "Collected all 3 Secret Coins on \'Ultrasonic\'", "Collect all 3 Secret Coins on \'Ultrasonic\'", "icon_30", 0);
+
     AchievementManager::addAchievement("geometry.ach.lunar.vault01", "Attention, please!", "Found the secret", "A secret is required", "icon_28", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault02", "Bingo!", "Found the secret", "A secret is required", "icon_29", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault03", "Among the stars", "Found the secret", "A secret is required", "ship_02", 0);
 
-    AchievementManager::addAchievement("geometry.ach.demon01", "Reflex Champion", "Completed a Demon difficulty level in Normal mode", "Complete a Demon difficulty level in Normal mode", "icon_30", 1);
+    AchievementManager::addAchievement("geometry.ach.demon01", "Reflex Champion", "Completed a Demon difficulty level in Normal mode", "Complete a Demon difficulty level in Normal mode", "icon_35", 1);
 
     AchievementManager::addAchievement("geometry.ach.coins01", "Coins?!", "Collected 5 Secret Coins", "Collect 5 Secret Coins", "icon_31", 1);
     AchievementManager::addAchievement("geometry.ach.coins02", "Maybe behind that block?", "Collected 10 Secret Coins", "Collect 10 Secret Coins", "ball_04", 1);
@@ -91,14 +93,4 @@ void HookedAchievementManager::addManualAchievements() {
     #ifdef GEODE_IS_WINDOWS
     AchievementManager::addAchievement("geometry.ach.steam01", "Steamrolling!", "Completed level 1-3 in Normal mode (Steam Exclusive)", "Complete level 1-3 in Normal mode (Steam Exclusive)", "icon_47", 0);
     #endif
-
-    //AchievementManager::addManualAchievements();
-}
-
-//CCDictionary* HookedAchievementManager::addAchievement(gd::string achID, gd::string title, gd::string descUnlock, gd::string descLock, gd::string reward, int idk) {
-//    return AchievementManager::addAchievement(achID, title, descUnlock, descLock, reward, idk);
-//}
-
-void HookedAchievementManager::reportAchievementWithID(char const* p0, int p1, bool p2) {
-    AchievementManager::reportAchievementWithID(p0, p1, p2);
 }

@@ -22,10 +22,11 @@ class $modify(GameManager) {
 			}
 		}
 
-		for(int i = 5; i < 29; i++) {
-			if(iconID == i && iconType == 0) return nullptr;
+		if(iconType == 0) {
+			for(int i = 5; i < 31; i++) {
+				if(iconID == i) return nullptr;
+			}
 		}
-
 		return GameManager::loadIcon(iconID, iconType, _idk);
 	}
 };

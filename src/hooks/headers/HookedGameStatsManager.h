@@ -3,4 +3,6 @@
 
 class $modify(HookedGameStatsManager, GameStatsManager) {
     int getBaseCurrency(int, bool, int);
+
+    void checkCoinAchievement(GJGameLevel*);
 };

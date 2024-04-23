@@ -14,10 +14,13 @@ bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType ico
     if(!CCNode::init())
         return false;
 
+    auto GM = GameManager::sharedState();
+
     m_levelIcon = SimplePlayer::create(1);
     m_levelIcon->updatePlayerFrame(iconID, iconType);
-    m_levelIcon->setColor(GameManager::get()->colorForIdx(17));
-    m_levelIcon->setSecondColor(GameManager::get()->colorForIdx(12));
+    m_levelIcon->setColor(GM->colorForIdx(17));
+    m_levelIcon->setSecondColor(GM->colorForIdx(12));
+    m_levelIcon->setGlowOutline(GM->colorForIdx(12));
     m_levelIcon->setScale(0.8f);
     addChild(m_levelIcon);
 
