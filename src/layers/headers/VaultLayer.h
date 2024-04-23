@@ -24,7 +24,7 @@ public:
     void onSubmit(CCObject*);
     
     void keyBackClicked();
-    void updateMessageLabel(std::string string);
+    void updateMessageLabel(std::string string, bool isSpecial);
 
     std::string getBasicMessage();
     std::string getMessage();

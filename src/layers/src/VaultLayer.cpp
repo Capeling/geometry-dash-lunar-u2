@@ -28,7 +28,7 @@ bool VaultLayer::init() {
     addChildAtPosition(m_textInput, Anchor::Center, ccp(0, 65), false);
 
     m_response = CCLabelBMFont::create("", "bigFont.fnt");
-    updateMessageLabel("It's you again...");
+    updateMessageLabel("It's you again...", false);
 
     addChildAtPosition(m_response, Anchor::Center, ccp(0, 105), false);
 
@@ -74,9 +74,14 @@ bool VaultLayer::init() {
     return true;
 }
 
-void VaultLayer::updateMessageLabel(std::string message) {
+void VaultLayer::updateMessageLabel(std::string message, bool isSpecial) {
     m_response->setString(message.c_str());
     m_response->limitLabelWidth(320, 0.6f, 0.f);
+    if(isSpecial) {
+        m_response->setColor({ 63, 217, 255 });
+    } else {
+        m_response->setColor({255, 255, 255});
+    }
 }
 
 void VaultLayer::onSubmit(CCObject*) {
@@ -96,28 +101,38 @@ void VaultLayer::onSubmit(CCObject*) {
     }
 
     if(std::string_view(lower) == std::string_view("attention") && !AM->isAchievementEarned("geometry.ach.lunar.vault01")) {
-        response = "Hmmm..?";
+        response = "Attention, to what is happening...";
         GM->reportAchievementWithID("geometry.ach.lunar.vault01", 100, false);
-        return updateMessageLabel(response);
+        return updateMessageLabel(response, false);
     }
 
     if(std::string_view(lower) == std::string_view("lucky") && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
         response = "It\'s your lucky day!";
         GM->reportAchievementWithID("geometry.ach.lunar.vault02", 100, false);
-        return updateMessageLabel(response);
+        return updateMessageLabel(response, false);
     }
 
     if(std::string_view(lower) == std::string_view("stellar") && !AM->isAchievementEarned("geometry.ach.lunar.vault03")) {
-        response = "Look into the stars...";
+        response = "SPAAAAACE!";
         GM->reportAchievementWithID("geometry.ach.lunar.vault03", 100, false);
-        return updateMessageLabel(response);
+        return updateMessageLabel(response, false);
     }
 
-    updateMessageLabel(response);
+    if(std::string_view(lower) == std::string_view("monochromatic") && !AM->isAchievementEarned("geometry.ach.lunar.vault04")) {
+        response = "Ah, right! Her name is Mono.";
+        GM->reportAchievementWithID("geometry.ach.lunar.vault04", 100, false);
+        return updateMessageLabel(response, false);
+    }
+
+    if(m_messageID == 3 || m_messageID == 4 || m_messageID == 5 || m_messageID == 6) {
+        return updateMessageLabel(response, true);
+    }
+
+    updateMessageLabel(response, false);
 }
 
 std::string VaultLayer::getMessage() {
-    int rand = std::rand() % 33 + 1;
+    int rand = std::rand() % 69 + 1;
     if(m_messageID == 0) {
         m_messageID = rand;
         m_messageIndex = 0;
@@ -131,6 +146,9 @@ std::string VaultLayer::getMessage() {
 }
 
 std::string VaultLayer::getThreadMessage(int index, int messageID) {
+
+    auto AM = AchievementManager::sharedState();
+
     if(messageID == 1) {
         switch(index) {
             case 0: return "Gah! You have too much free time";
@@ -138,7 +156,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 2: return "Why won't you go play them?";
             case 3: return "So i can rest...";
             case 4: return "...";
-            case 5: m_messageID = 0; m_messageIndex = 0; break;
+            case 5: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
     if(messageID == 2) {
@@ -149,7 +167,51 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 3: return "......!";
             case 4: return "Gah! I had a nightmare!";
             case 5: return "It was about you, how ironic";
-            case 6: m_messageID = 0; m_messageIndex = 0; break;
+            case 6: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+        if(messageID == 3 && !AM->isAchievementEarned("geometry.ach.lunar.vault04")) {
+        switch(index) {
+            case 0: return "Legends tell of a girl...";
+            case 1: return "Her hair flows like a waterfall...";
+            case 2: return "Her skin is as pale as the light...";
+            case 3: return "And her eyes reflect her loneliness";
+            case 4: return "...not enough?";
+            case 5: return "Well, they say she looks grayscale";
+            case 6: return "Colorless, even...";
+            case 7: return "What was that word again?";
+            case 8: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+        if(messageID == 4 && !AM->isAchievementEarned("geometry.ach.lunar.vault01")) {
+        switch(index) {
+            case 0: return "They say people aren't paying enough";
+            case 1: return "Paying what?";
+            case 2: return "I don't remember...";
+            case 3: return "But it has something to do with awareness";
+            case 4: return "...not enough?";
+            case 5: return "Realization, of what's occurring around you";
+            case 6: return "Observation, of what you are witnessing";
+            case 7: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+        if(messageID == 5 && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
+        switch(index) {
+            case 0: return "It hasn't been my day in years";
+            case 1: return "People keep annoying me...";
+            case 2: return "People like you";
+            case 3: return "You're probably having a great day";
+            case 4: return "A day better than mine...";
+            case 5: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+        if(messageID == 6 && !AM->isAchievementEarned("geometry.ach.lunar.vault03")) {
+        switch(index) {
+            case 0: return "The night sky looks wonderful";
+            case 1: return "Stars shining across it all...";
+            case 2: return "If only I could leave this place and see those again";
+            case 3: return "But I will not leave...";
+            case 4: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
     m_messageID = 0;
@@ -174,7 +236,7 @@ std::string VaultLayer::getBasicMessage() {
         case 12: return "Whats the point of this? What are you going to achieve?!";
         case 13: return "Who even let you in?!";
         case 14: return "Can you even read?!";
-        default: return "";
+        default: return "...";
     }
     return "";
 }

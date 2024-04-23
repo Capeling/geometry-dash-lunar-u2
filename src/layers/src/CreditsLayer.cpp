@@ -59,7 +59,7 @@ void CreditsLayer::setupCreditsTab() {
     //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
     auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
     auto fatzUser = CreditNode::create("FatzFries", "\"Space Battle\" Boss Design\nIcons (Cube 5 - 12)", 235, 18, 12, 12, true, 14007342);
-    auto cyanUser = CreditNode::create("cyanflower", "Icons", 2, 12, 3, 3, true, 21113321);
+    auto cyanUser = CreditNode::create("cyanflower", "Vault Hints\nIcons", 2, 12, 3, 3, true, 21113321);
 
     CCArray* row1CreditArray = CCArray::create();
     CCArray* row2CreditArray = CCArray::create();

@@ -9,15 +9,25 @@
 
 class $modify(GameManager) {
 	gd::string sheetNameForIcon(int iconID, int iconType) {
-		if(iconID == 2 && iconType == 5) { //robot is weird if i dont do it like this
+		if(iconType == 5) {
+			if(iconID == 2) {
 			return "robot_02"_spr;
+			}
+			if(iconID == 3) {
+			return "robot_03"_spr;
+			}
 		}
 		auto ret = GameManager::sheetNameForIcon(iconID, iconType);
 		return ret;
 	}
 	cocos2d::CCTexture2D* loadIcon(int iconID, int iconType, int _idk) {
 		if(iconID == 2) {
-			if(iconType == 1 || iconType == 2 || iconType == 3 || iconType == 7) {
+			if(iconType == 1 || iconType == 2 || iconType == 3) {
+				return nullptr;
+			}
+		}
+		if(iconType == 7) {
+			if(iconID == 2 || iconID == 3) {
 				return nullptr;
 			}
 		}

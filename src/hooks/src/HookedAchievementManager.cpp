@@ -32,11 +32,12 @@ void HookedAchievementManager::addManualAchievements() {
     AchievementManager::addAchievement("geometry.ach.level10a", "Light Speed", "Completed \'Ultrasonic\' in Practice mode", "Complete \'Ultrasonic\' in Practice mode", "icon_23", 1);
     AchievementManager::addAchievement("geometry.ach.level10b", "Ultrasonic!", "Completed \'Ultrasonic\' in Normal mode", "Complete \'Ultrasonic\' in Normal mode", "swing_02", 1);
     
-    AchievementManager::addAchievement("geometry.ach.lunar.demoncoin01", "Ultimate Ultrasonic!", "Collected all 3 Secret Coins on \'Ultrasonic\'", "Collect all 3 Secret Coins on \'Ultrasonic\'", "icon_30", 0);
+    AchievementManager::addAchievement("geometry.ach.lunar.demoncoin01", "Ultimate Ultrasonic!", "Collected all 3 Secret Coins on \'Ultrasonic\'", "Collect all 3 Secret Coins on \'Ultrasonic\'", "robot_03", 0);
 
     AchievementManager::addAchievement("geometry.ach.lunar.vault01", "Attention, please!", "Found the secret", "A secret is required", "icon_28", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault02", "Bingo!", "Found the secret", "A secret is required", "icon_29", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault03", "Among the stars", "Found the secret", "A secret is required", "ship_02", 0);
+    AchievementManager::addAchievement("geometry.ach.lunar.vault04", "What was that word again?", "Found the secret", "A secret is required", "icon_30", 0);
 
     AchievementManager::addAchievement("geometry.ach.demon01", "Reflex Champion", "Completed a Demon difficulty level in Normal mode", "Complete a Demon difficulty level in Normal mode", "icon_35", 1);
 
