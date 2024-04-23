@@ -254,7 +254,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
 }
 
 std::string VaultLayer::getBasicMessage() {
-    int rand = std::rand() % 14 + 1;
+    int rand = std::rand() % 27 + 1;
     switch(rand) {
         case 1: return "It's you again...";
         case 2: return "Have you ever heard of personal space?";
