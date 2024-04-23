@@ -107,7 +107,7 @@ void VaultLayer::onSubmit(CCObject*) {
     }
 
     if(std::string_view(lower) == std::string_view("lucky") && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
-        response = "It\'s your lucky day!";
+        response = "It's your lucky day!";
         GM->reportAchievementWithID("geometry.ach.lunar.vault02", 100, false);
         return updateMessageLabel(response, false);
     }
@@ -132,7 +132,7 @@ void VaultLayer::onSubmit(CCObject*) {
 }
 
 std::string VaultLayer::getMessage() {
-    int rand = std::rand() % 69 + 1;
+    int rand = std::rand() % 39 + 1;
     if(m_messageID == 0) {
         m_messageID = rand;
         m_messageIndex = 0;
@@ -154,7 +154,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 0: return "Gah! You have too much free time";
             case 1: return "You have, like, so much levels available";
             case 2: return "Why won't you go play them?";
-            case 3: return "So i can rest...";
+            case 3: return "So I can rest...";
             case 4: return "...";
             case 5: m_messageID = 0; m_messageIndex = 0; return "";
         }
@@ -189,10 +189,9 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 1: return "Paying what?";
             case 2: return "I don't remember...";
             case 3: return "But it has something to do with awareness";
-            case 4: return "...not enough?";
-            case 5: return "Realization, of what's occurring around you";
-            case 6: return "Observation, of what you are witnessing";
-            case 7: m_messageID = 0; m_messageIndex = 0; return "";
+            case 4: return "Realization, of what's occurring around you";
+            case 5: return "Observation, of what you are witnessing";
+            case 6: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
         if(messageID == 5 && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
