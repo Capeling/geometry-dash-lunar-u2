@@ -52,7 +52,7 @@ void CreditsLayer::setupCreditsTab() {
     auto creditsLabel = CCLabelBMFont::create("Credits", "bigFont.fnt");
     creditsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
-    auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 141, 76, 40, 40, true, 18226543);
+    auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 37, 9, 12, 12, true, 18226543);
     auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 467, 6, 3, 1, true, 10026833);
     auto toastUser = CreditNode::create("RealToastGD", "Levels", 275, 6, 3, 0, true, 26666582);
 
