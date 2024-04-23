@@ -152,7 +152,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
     if(messageID == 1) {
         switch(index) {
             case 0: return "Gah! You have too much free time";
-            case 1: return "You have, like, so much levels available";
+            case 1: return "You have, like, so many levels available";
             case 2: return "Why won't you go play them?";
             case 3: return "So I can rest...";
             case 4: return "...";
@@ -175,7 +175,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 0: return "Legends tell of a girl...";
             case 1: return "Her hair flows like a waterfall...";
             case 2: return "Her skin is as pale as the light...";
-            case 3: return "And her eyes reflect her loneliness";
+            case 3: return "And her eyes reflect her emptiness";
             case 4: return "...not enough?";
             case 5: return "Well, they say she looks grayscale";
             case 6: return "Colorless, even...";
@@ -197,7 +197,7 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
         if(messageID == 5 && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
         switch(index) {
             case 0: return "It hasn't been my day in years";
-            case 1: return "People keep annoying me...";
+            case 1: return "People keep bothering me...";
             case 2: return "People like you";
             case 3: return "You're probably having a great day";
             case 4: return "A day better than mine...";
@@ -209,8 +209,41 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 0: return "The night sky looks wonderful";
             case 1: return "Stars shining across it all...";
             case 2: return "If only I could leave this place and see those again";
-            case 3: return "But I will not leave...";
-            case 4: m_messageID = 0; m_messageIndex = 0; return "";
+            case 3: return "That would be lovely";
+            case 4: return "Alas, I cannot";
+            case 5: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+    if(messageID == 7) {
+        switch(index) {
+            case 0: return "The big one told me I was good at puns";
+            case 1: return "He left me to rot after I told him one";
+            case 2: return "Wanna hear it?";
+            case 3: return "What takes years to develop and is on top?";
+            case 4: return "A robot!";
+            case 5: return "...it was funnier in my head, I swear";
+            case 6: return "Ah, how much I miss the big one";
+            case 7: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+    if(messageID == 8) {
+        switch(index) {
+            case 0: return "There once was a traveller";
+            case 1: return "They say he was made of slime";
+            case 2: return "Whatever that means...";
+            case 3: return "He left the world to explore the universe";
+            case 4: return "Barely anyone has seen him since";
+            case 5: return "But those that have say he's...";
+            case 6: return "Interesting";
+            case 7: m_messageID = 0; m_messageIndex = 0; return "";
+        }
+    }
+    if(messageID == 9) {
+        switch(index) {
+            case 0: return "I've been thinking";
+            case 1: return "What if, by chance";
+            case 2: return "You pressed that arrow button?";
+            case 3: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
     m_messageID = 0;
@@ -221,20 +254,33 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
 std::string VaultLayer::getBasicMessage() {
     int rand = std::rand() % 14 + 1;
     switch(rand) {
-        case 1: return "Its you again...";
-        case 2: return "Have you heard of personal space?!";
+        case 1: return "It's you again...";
+        case 2: return "Have you ever heard of personal space?";
         case 3: return "...";
-        case 4: return "Gah! You have too much free time";
+        case 4: return "Gah!";
         case 5: return "I'll stay here until the end of my life...";
         case 6: return "Go home";
-        case 7: return "You test my patience";
+        case 7: return "You test my patience...";
         case 8: return "Stop bothering me";
         case 9: return "Leave me alone!";
         case 10: return "What are you doing?!";
         case 11: return "Go bother someone else.";
-        case 12: return "Whats the point of this? What are you going to achieve?!";
+        case 12: return "What's the point of this? What are you going to achieve?";
         case 13: return "Who even let you in?!";
         case 14: return "Can you even read?!";
+        case 15: return "You have too much free time...";
+        case 16: return "Spend your time somewhere else";
+        case 17: return "Don't you have levels to beat?";
+        case 18: return "The stars are bright and yet you waste your time here";
+        case 19: return "Just leave this place already!";
+        case 20: return "Aaaaarrrgh!!";
+        case 21: return ".....";
+        case 22: return ".......";
+        case 23: return "And yet you remain here...";
+        case 24: return "The shadow wizards locked me here...";
+        case 25: return "I'm starving... get it?";
+        case 26: return "Every time I blink, I still see you";
+        case 27: return "I haven't had a rest in a while";
         default: return "...";
     }
     return "";
