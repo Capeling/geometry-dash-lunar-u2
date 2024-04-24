@@ -8,7 +8,6 @@ void HookedLoadingLayer::loadingFinished() {
 bool HookedLoadingLayer::init(bool fromReload) {
     if(!LoadingLayer::init(fromReload))
         return false;
-    #ifndef GEODE_IS_ANDROID32
     auto SFC = CCSpriteFrameCache::get();
 
     auto director = CCDirector::get();
@@ -20,6 +19,7 @@ bool HookedLoadingLayer::init(bool fromReload) {
     SFC->addSpriteFramesWithFile("LunarSheet.plist"_spr);
 
     auto mainTitle = getChildOfType<CCSprite>(this, 1);
+    if(!mainTitle) return true;
     
     auto lunarTitle = CCSprite::createWithSpriteFrameName("GJL_lunarLogo_001.png"_spr);
     if(!lunarTitle) return true;
@@ -30,11 +30,11 @@ bool HookedLoadingLayer::init(bool fromReload) {
     mainTitle->setPositionY(mainTitle->getPositionY() + 22.f);
 
     CCSprite* robtopLogo = getChildOfType<CCSprite>(this, 2);
+    if(!robtopLogo) return true;
     robtopLogo->setDisplayFrame(SFC->spriteFrameByName("GJ_genaLogo_001.png"_spr));
     robtopLogo->setPositionY(robtopLogo->getPositionY() + 22.f);
 
     robtopLogo->setScale(1.0f);
-    #endif
 
     return true;
 }
