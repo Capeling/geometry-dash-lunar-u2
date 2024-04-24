@@ -6,6 +6,19 @@
 #include <Geode/modify/EditorPauseLayer.hpp>
 #include <Geode/modify/GameManager.hpp>
 #include <Geode/modify/SongsLayer.hpp>
+#include <Geode/modify/CCSprite.hpp>
+
+class $modify(CCSprite) { //guh
+	static CCSprite* create(const char *pszFileName) {
+		if(std::string_view(pszFileName) == "dialogIcon_051.png") {
+			return CCSprite::create("GJL_lunarDialogue_001.png"_spr);
+		}
+		if(std::string_view(pszFileName) == "dialogIcon_052.png") {
+			return CCSprite::create("GJL_secretLunar_001.png"_spr);
+		}
+		return CCSprite::create(pszFileName);
+	}
+};
 
 class $modify(GameManager) {
 	gd::string sheetNameForIcon(int iconID, int iconType) {

@@ -3,14 +3,17 @@
 #include "../../layers/headers/VaultLayer.h"
 
 void HookedLevelPage::onTheTower(CCObject* sender) {
+
+    auto GSM = GameStatsManager::sharedState();
+
+    if(GSM->getStat("8") <= 19) {
+        auto dl = DialogLayer::createDialogLayer(nullptr, getFirstDialogArray(), 4);
+        dl->animateInRandomSide();
+        CCScene::get()->addChild(dl);
+        return;
+    }
+
     CCDirector::get()->replaceScene(CCTransitionFade::create(0.5f, VaultLayer::scene()));
-    return;
-    //return LevelPage::onTheTower(sender);
-    #ifndef GEODE_IS_ANDROID
-    auto dl = DialogLayer::createDialogLayer(nullptr, getDialogArray(), 2);
-    dl->animateIn(DialogAnimationType::FromRight);
-    CCScene::get()->addChild(dl);
-    #endif
 }
 
 void HookedLevelPage::updateDynamicPage(GJGameLevel* level) {
@@ -50,12 +53,17 @@ void HookedLevelPage::onPlay(CCObject* sender) {
     return LevelPage::onPlay(sender);
 }
 
-CCArray* HookedLevelPage::getDialogArray() {
+CCArray* HookedLevelPage::getFirstDialogArray() {
     CCArray* array = CCArray::create();
 
-    array->addObject(WorkingDialogObject::create("Scratch", "<cr><s160>HEY!</s></c> <d030>Hold on.", 11, 1, false, {255, 255, 255}));
-    array->addObject(WorkingDialogObject::create("Scratch", "It's too early for you to see <cl>him</c>.", 13, 1, false, {255, 255, 255}));
-    array->addObject(WorkingDialogObject::create("Scratch", "Check <cl>him</c> out later, <d040>he's not in the mood <cg>right now.<d030>.<d030>.</c>", 12, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "Huh? <d040>Who is this?", 52, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", ".<d030>.<d030>.", 204, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "<cr>Nevermind</c>.", 204, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "No matter <cl>who</c> you are, <d040>I'm <cr>not</c> interested.", 52, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "If you want to have a real conversation with me, <d040>bring me something with <cy>gold</c>.", 54, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "Ingots, <d030><cy>coins</c>, <d030>rings, <d030>I don't care.", 204, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "It should be <cy>GOLD</c>, <d030>and it should be <cl>20</c> of it.", 52, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "Now go away!", 52, 1, false, {255, 255, 255}));
     
     return array;
 }
