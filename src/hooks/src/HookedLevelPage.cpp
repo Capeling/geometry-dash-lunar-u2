@@ -46,6 +46,10 @@ void HookedLevelPage::onInfo(CCObject* sender) {
     LevelPage::onInfo(sender);
 }
 
+void HookedLevelPage::onPlay(CCObject* sender) {
+    return LevelPage::onPlay(sender);
+}
+
 CCArray* HookedLevelPage::getDialogArray() {
     CCArray* array = CCArray::create();
 

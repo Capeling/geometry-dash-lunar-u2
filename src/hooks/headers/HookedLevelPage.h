@@ -13,5 +13,8 @@ class $modify(HookedLevelPage, LevelPage) {
     $override
     void onInfo(CCObject* sender);
 
+    $override
+    void onPlay(CCObject* sender);
+
     cocos2d::CCArray* getDialogArray();
 };

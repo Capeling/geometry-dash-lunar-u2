@@ -12,7 +12,7 @@ bool HookedLevelTools::verifyLevelIntegrity(gd::string verifyString, int levelID
         case 3:
             if(verifyString.size() == 3873233) isValid = true;
             break;
-        case 4:
+        case 4: 
             if(verifyString.size() == 4414142) isValid = true;
             break;
         default:
@@ -188,6 +188,7 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
         level->m_levelString = LocalLevelManager::sharedState()->getMainLevelString(levelID);
     }
     level->m_levelID = levelID;
+    level->m_levelType = GJLevelType::Local;
     return level;
 }
 
@@ -195,7 +196,6 @@ void HookedLevelTools::setLevelInfo(GJGameLevel* level, int stars, GJDifficulty 
     level->m_stars = stars;
     level->m_difficulty = difficulty;
     level->m_requiredCoins = coinsRequired;
-    level->m_levelType = GJLevelType::Local;
     #ifdef GEODE_IS_WINDOWS
     MBO(int, level, 0x414) = frameTime;
     #endif
