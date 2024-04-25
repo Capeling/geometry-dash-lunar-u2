@@ -1,8 +1,8 @@
 #include "../headers/HookedLoadingLayer.h"
 
 void HookedLoadingLayer::loadingFinished() {
-    LoadingLayer::loadingFinished();
     CCSpriteFrameCache::get()->addSpriteFramesWithFile("IconSheetGenerated.plist"_spr);
+    LoadingLayer::loadingFinished();
 }
 
 bool HookedLoadingLayer::init(bool fromReload) {

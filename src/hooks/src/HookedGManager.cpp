@@ -8,5 +8,4 @@ void HookedGManager::setup() {
 
     m_fileName = compare;
     GManager::setup();
-    log::info("m_fileName: {}", m_fileName);
 }

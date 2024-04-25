@@ -32,7 +32,7 @@ bool HookedMenuLayer::init() {
 
 void HookedMenuLayer::onCreator(CCObject* sender) {
     return MenuLayer::onCreator(sender);
-    
+
     auto dl = DialogLayer::createDialogLayer(nullptr, getDialogArray(), 2);
     dl->animateIn(DialogAnimationType::FromLeft);
     CCScene::get()->addChild(dl);
