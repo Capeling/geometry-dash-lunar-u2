@@ -10,5 +10,6 @@ This mod uses its own save file so your save data will not be modified. Your act
 - Capeling: Mod Developer, Levels
 - GenaMorphosis: Levels
 - Andrexel: Levels
+- RealToastGD: Levels
 - FatzFries: "Space Battle" Boss Design, Icons (Cube 5 - 12)
 - cyanflower: Icons

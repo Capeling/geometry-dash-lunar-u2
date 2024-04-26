@@ -10,9 +10,10 @@ protected: //members go here
     CCMenuItemSpriteExtra* m_lunarMasterBtn = nullptr;
     CCSprite* m_bg = nullptr;
     CCLabelBMFont* m_response = nullptr;
-    CCSprite* m_playSpr = nullptr;
-    CCMenuItemSpriteExtra* m_playBtn = nullptr;
-    CCMenu* m_playMenu = nullptr;
+    CCSprite* m_throneSpr = nullptr;
+    CCLabelBMFont* m_throneLabel = nullptr;
+    CCMenuItemSpriteExtra* m_throneBtn = nullptr;
+    CCMenu* m_throneMenu = nullptr;
     int m_messageID;
     int m_messageIndex;
 public:

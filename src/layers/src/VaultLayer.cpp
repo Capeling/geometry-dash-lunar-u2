@@ -45,27 +45,28 @@ bool VaultLayer::init() {
     auto backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
     auto backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(VaultLayer::onClose));
 
-    bool hasSeenAnim = Mod::get()->getSavedValue<bool>("has-seen-anim");
-    m_playSpr = CCSprite::createWithSpriteFrameName("GJ_playBtn2_001.png");
-    m_playSpr->setScale(0.5f);
+    m_throneSpr = CCSprite::createWithSpriteFrameName("GJL_lunarThrone_001.png"_spr);
+    m_throneSpr->setScale(0.25f);
 
-    m_playBtn = CCMenuItemSpriteExtra::create(m_playSpr, this, nullptr);
+    m_throneBtn = CCMenuItemSpriteExtra::create(m_throneSpr, this, nullptr);
+    m_throneBtn->m_scaleMultiplier = 1.f;
+    m_throneBtn->m_colorEnabled = true;
+    m_throneBtn->m_colorDip = 100.f;
 
-    m_playMenu = CCMenu::create();
-    m_playMenu->addChild(m_playBtn);
+    m_throneLabel = CCLabelBMFont::create("Throne\nRoom", "goldFont.fnt");
+    m_throneLabel->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
+    m_throneLabel->setPosition({0.f, 65.f});
+    m_throneLabel->setScale(0.5f);
 
-    if(!hasSeenAnim) {
-        m_playSpr->setScale(1.f);
-        auto scaleTo = CCScaleTo::create(0.5f, 0.5f);
-        auto easeInOut = CCEaseInOut::create(scaleTo, 2.0f);
-        m_playSpr->runAction(easeInOut);
-    }
+    m_throneMenu = CCMenu::create();
+    m_throneMenu->addChild(m_throneBtn);
+    m_throneMenu->addChild(m_throneLabel);
 
     auto backMenu = CCMenu::create();
     backMenu->addChild(backBtn);
     
     addChildAtPosition(backMenu, Anchor::TopLeft, ccp(25, -22), false);
-    addChildAtPosition(m_playMenu, Anchor::BottomRight, ccp(-50, 50), false);
+    addChildAtPosition(m_throneMenu, Anchor::BottomRight, ccp(-55, 55), false);
 
     setKeyboardEnabled(true);
     setKeypadEnabled(true);
