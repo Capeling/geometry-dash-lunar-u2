@@ -125,6 +125,11 @@ void VaultLayer::onSubmit(CCObject*) {
         return updateMessageLabel(response, false);
     }
 
+    if(std::string_view(lower) == std::string_view("code")) {
+        response = "cG93ZXJmdWwgZXhwbG9zaW9uIG9mIGEgc3Rhcg==";
+        return updateMessageLabel(response, true);
+    }
+
     if(m_messageID == 3 || m_messageID == 4 || m_messageID == 5 || m_messageID == 6) {
         return updateMessageLabel(response, true);
     }
@@ -183,7 +188,8 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 5: return "Well, they say she looks grayscale";
             case 6: return "Colorless, even...";
             case 7: return "What was that word again?";
-            case 8: m_messageID = 0; m_messageIndex = 0; return "";
+            case 8: return "...";
+            case 9: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
         if(messageID == 4 && !AM->isAchievementEarned("geometry.ach.lunar.vault01")) {
@@ -194,7 +200,8 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 3: return "But it has something to do with awareness";
             case 4: return "Realization, of what's occurring around you";
             case 5: return "Observation, of what you are witnessing";
-            case 6: m_messageID = 0; m_messageIndex = 0; return "";
+            case 6: return "...";
+            case 7: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
         if(messageID == 5 && !AM->isAchievementEarned("geometry.ach.lunar.vault02")) {
@@ -204,7 +211,8 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 2: return "People like you";
             case 3: return "You're probably having a great day";
             case 4: return "A day better than mine...";
-            case 5: m_messageID = 0; m_messageIndex = 0; return "";
+            case 5: return "...";
+            case 6: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
         if(messageID == 6 && !AM->isAchievementEarned("geometry.ach.lunar.vault03")) {
@@ -214,7 +222,8 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 2: return "If only I could leave this place and see those again";
             case 3: return "That would be lovely";
             case 4: return "Alas, I cannot";
-            case 5: m_messageID = 0; m_messageIndex = 0; return "";
+            case 5: return "...";
+            case 6: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
     if(messageID == 7) {

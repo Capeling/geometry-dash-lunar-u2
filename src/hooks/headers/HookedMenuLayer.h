@@ -12,5 +12,8 @@ class $modify(HookedMenuLayer, MenuLayer) {
     $override
     void onMoreGames(CCObject*);
 
+    $override
+    virtual void keyDown(enumKeyCodes);
+
     CCArray* getDialogArray();
 };

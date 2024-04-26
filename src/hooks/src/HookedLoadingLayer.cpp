@@ -12,6 +12,7 @@ bool HookedLoadingLayer::init(bool fromReload) {
 
     auto director = CCDirector::get();
     auto winSize = director->getWinSize();
+    auto GM = GameManager::sharedState();
 
     auto searchPathRoot = dirs::getModRuntimeDir() / Mod::get()->getID() / "resources";
     CCFileUtils::sharedFileUtils()->addSearchPath(searchPathRoot.string().c_str()); 
@@ -35,6 +36,10 @@ bool HookedLoadingLayer::init(bool fromReload) {
     robtopLogo->setPositionY(robtopLogo->getPositionY() + 22.f);
 
     robtopLogo->setScale(1.0f);
+
+    if(!GM->getUGV("30")) {
+        GM->setUGV("30", true);
+    }
 
     return true;
 }

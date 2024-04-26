@@ -7,6 +7,7 @@
 #include <Geode/modify/GameManager.hpp>
 #include <Geode/modify/SongsLayer.hpp>
 #include <Geode/modify/CCSprite.hpp>
+#include <Geode/modify/TextArea.hpp>
 
 class $modify(CCSprite) { //guh
 	static CCSprite* create(const char *pszFileName) {
@@ -17,6 +18,13 @@ class $modify(CCSprite) { //guh
 			return CCSprite::create("GJL_secretLunar_001.png"_spr);
 		}
 		return CCSprite::create(pszFileName);
+	}
+};
+
+class $modify(TextArea) {
+	static TextArea* create(gd::string str, char const* font, float scale, float width, cocos2d::CCPoint anchor, float lineHeight, bool disableColor) {
+		log::info("TextArea::create(\"{}\", \"{}\", {}, {}, ({}), {}, {})", str, font, scale, width, anchor, lineHeight, disableColor);
+		return TextArea::create(str, font, scale, width, anchor, lineHeight, disableColor);
 	}
 };
 

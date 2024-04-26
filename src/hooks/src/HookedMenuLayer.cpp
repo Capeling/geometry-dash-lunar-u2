@@ -1,6 +1,7 @@
 #include "../headers/HookedMenuLayer.h"
 #include "../../utils/WorkingDialogObject.h"
 #include "../../layers/headers/CreditsLayer.h"
+#include "../../nodes/headers/SavePopup.h"
 
 bool HookedMenuLayer::init() {
     if(!MenuLayer::init())
@@ -19,13 +20,11 @@ bool HookedMenuLayer::init() {
         moreGamesBtn->setNormalImage(CCSprite::createWithSpriteFrameName("GJL_creditsBtn_001.png"_spr));
     }
 
-    bool hasSeenSaveWarning = Mod::get()->getSavedValue<bool>("seen-saved-warning");
+    bool hasSeenSaveWarning = GameManager::get()->getUGV("50");
     if(!hasSeenSaveWarning) {
-        auto alert = FLAlertLayer::create("Save Warning", "<cl>Geometry Dash: Lunar</c> uses a <co>different</c> save file to avoid <cr>stat modification</c>.\nYour <cg>save file</c> has not been <cr>deleted</c>, if you want to go back to your <cg>default</c> save file disable <cl>Geometry Dash: Lunar</c>.", "OK");
-        alert->m_noElasticity = true;
-        alert->m_scene = this;
-        alert->show();
-        Mod::get()->setSavedValue<bool>("seen-saved-warning", true);
+        auto popup = SavePopup::create();
+        popup->m_scene = this;
+        popup->show();
     }
     return true;
 }
@@ -42,6 +41,10 @@ void HookedMenuLayer::onMoreGames(CCObject*) {
     //auto alert = FLAlertLayer::create("Credits", "<cl>Mod Developer</c>: Capeling\n<cg>Levels (1-4)</c>: GenaMorphosis\n<cp>Icons</c>: FatzFries", "OK");
     //alert->show();
     CreditsLayer::create("Credits")->show();
+}
+
+void HookedMenuLayer::keyDown(enumKeyCodes keyCode) {
+    MenuLayer::keyDown(keyCode);
 }
 
 CCArray* HookedMenuLayer::getDialogArray() {
