@@ -25,22 +25,25 @@ protected:
 public:
 	bool init(std::string title, std::string text, int type, float unknown, bool also_unknown, _ccColor3B textColor) {
 		#ifdef GEODE_IS_WINDOWS
-
 		uintptr_t base = base::get();
 
 		return reinterpret_cast<bool(__thiscall*)(WorkingDialogObject*, std::string, std::string, int, float, bool, _ccColor3B)>
 			(base + 0x9a6c0)(this, title, text, type, unknown, also_unknown, textColor);
-		#else
-		return base_cast<DialogObject*>(this)->init(title.c_str(), text.c_str(), type, unknown, also_unknown, textColor);
 		#endif
 	}
 
 	static WorkingDialogObject* create(std::string title, std::string text, int type, float text_scale, bool is_unskippable, _ccColor3B textColor) {
+		#ifdef GEODE_IS_WINDOWS
 		WorkingDialogObject* obj = new WorkingDialogObject();
-		
-		obj->init(title, text, type, text_scale, is_unskippable, textColor);
-		obj->autorelease();
-
-		return obj;
+		if(obj && obj->init(title, text, type, text_scale, is_unskippable, textColor)) {
+			obj->autorelease();
+			return obj;
+		}
+		CC_SAFE_DELETE(obj);
+		return nullptr;
+		#else
+		DialogObject* obj2 = DialogObject::create(title, text, type, text_scale, is_unskippable, textColor);
+		return base_cast<WorkingDialogObject*>(obj2);
+		#endif
 	}
 };

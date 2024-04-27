@@ -130,11 +130,7 @@ void VaultLayer::onSubmit(CCObject*) {
         return updateMessageLabel(response, true);
     }
 
-    if(m_messageID == 3 || m_messageID == 4 || m_messageID == 5 || m_messageID == 6) {
-        return updateMessageLabel(response, true);
-    }
-
-    updateMessageLabel(response, false);
+    updateMessageLabel(response, m_messageID == 3 || m_messageID == 4 || m_messageID == 5 || m_messageID == 6);
 }
 
 std::string VaultLayer::getMessage() {
