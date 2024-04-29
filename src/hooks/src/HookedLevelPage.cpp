@@ -5,9 +5,18 @@
 void HookedLevelPage::onTheTower(CCObject* sender) {
 
     auto GSM = GameStatsManager::sharedState();
+    auto GM = GameManager::sharedState();
 
     if(GSM->getStat("8") <= 19) {
-        auto dl = DialogLayer::createDialogLayer(nullptr, getFirstDialogArray(), 4);
+        if(!GM->getUGV("51")) {
+            auto dl = DialogLayer::createDialogLayer(nullptr, getFirstDialogArray(), 4);
+            dl->animateInRandomSide();
+            CCScene::get()->addChild(dl);
+            GM->setUGV("51", true);
+            return;
+        }
+
+        auto dl = DialogLayer::createDialogLayer(nullptr, getNotEnoughDialogArray(), 4);
         dl->animateInRandomSide();
         CCScene::get()->addChild(dl);
         return;
@@ -64,6 +73,25 @@ CCArray* HookedLevelPage::getFirstDialogArray() {
     array->addObject(WorkingDialogObject::create("???", "Ingots, <d030><cy>coins</c>, <d030>rings, <d030>I don't care.", 204, 1, false, {255, 255, 255}));
     array->addObject(WorkingDialogObject::create("???", "It should be <cy>GOLD</c>, <d030>and it should be <cl>20</c> of it.", 52, 1, false, {255, 255, 255}));
     array->addObject(WorkingDialogObject::create("???", "Now go away!", 52, 1, false, {255, 255, 255}));
+    
+    return array;
+}
+
+CCArray* HookedLevelPage::getNotEnoughDialogArray() {
+
+    auto GSM = GameStatsManager::sharedState();
+
+    CCArray* array = CCArray::create();
+    
+    int coins = GSM->getStat("8");
+
+    if(coins < 4) {
+        array->addObject(WorkingDialogObject::create("???", fmt::format("<cy><s100>{}</s></c>?!", coins).c_str(), 52, 1, false, {255, 255, 255}));
+    } else {
+    array->addObject(WorkingDialogObject::create("???", fmt::format("1, <d040>2, <d040>3.<d020>.<d020>. <d040><cy><s100>{}</s></c>?!", coins).c_str(), 52, 1, false, {255, 255, 255}));
+    }
+    array->addObject(WorkingDialogObject::create("???", "<s100>Can you not read?!</s> <d080>I said <cl>20</c>!", 52, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "Go away!", 52, 1, false, {255, 255, 255}));
     
     return array;
 }

@@ -12,4 +12,8 @@ public:
 
     $override
     void onPrev(CCObject* sender);
+
+    CCArray* getGoldCoinDialog();
+
+    void createGoldCoinDialog();
 };
