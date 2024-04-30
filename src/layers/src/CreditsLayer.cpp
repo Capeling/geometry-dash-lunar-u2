@@ -14,11 +14,16 @@ bool CreditsLayer::setup(std::string const& title) {
     m_levelsLayer = CCLayer::create();
     m_levelsLayer->setID("levels-tab"_spr);
 
+    m_debugLayer = CCLayer::create();
+    m_debugLayer->setID("debug-tab"_spr);
+
     setupCreditsTab();
     setupLevelsTab();
+    setupDebugTab();
 
     m_mainLayer->addChild(m_creditsLayer, 1);
     m_mainLayer->addChild(m_levelsLayer, 1);
+    m_mainLayer->addChild(m_debugLayer, 1);
 
     auto forwardTabSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png");
     forwardTabSpr->setFlipX(true);
@@ -144,18 +149,49 @@ void CreditsLayer::setupLevelsTab() {
     m_levelsLayer->addChild(levelsMenu);
 }
 
+void CreditsLayer::setupDebugTab() {
+    auto director = CCDirector::sharedDirector();
+    auto winSize = director->getWinSize();
+
+    auto debugLabel = CCLabelBMFont::create("Debug", "bigFont.fnt");
+    debugLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
+
+    auto resetSave = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Save Popup", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
+    auto resetOneTimeNotEnough = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Not Enough Dialogue", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
+    auto resetEnoughCoins = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Enough Coins Dialogue", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
+
+    resetSave->setTag(50);
+    resetOneTimeNotEnough->setTag(51);
+    resetEnoughCoins->setTag(52);
+
+    auto debugMenu = CCMenu::create();
+    debugMenu->setLayout(AxisLayout::create(Axis::Row)->setGap(20.f));
+
+    debugMenu->addChild(resetSave);
+    debugMenu->addChild(resetOneTimeNotEnough);
+    debugMenu->addChild(resetEnoughCoins);
+    
+    debugMenu->updateLayout();
+
+    m_debugLayer->addChild(debugMenu);
+    m_debugLayer->addChild(debugLabel);
+}
+
 void CreditsLayer::onChangeTab(CCObject* sender) {
     m_tab += sender->getTag();
     changeTab();
 }
 
-void CreditsLayer::changeTab() {
+void CreditsLayer::onResetGameVar(CCObject* sender) {
+    GameManager::get()->setUGV(fmt::format("{}", sender->getTag()).c_str(), false);
+}
 
-    log::info("m_tab: {}", m_tab);
+void CreditsLayer::changeTab() {
 
     if(m_tab == 0) {
         m_levelsLayer->setVisible(false);
         m_creditsLayer->setVisible(true);
+        m_debugLayer->setVisible(false);
         m_backTabMenu->setVisible(false);
         m_forwardTabMenu->setVisible(true);
     }
@@ -163,8 +199,18 @@ void CreditsLayer::changeTab() {
     if(m_tab == 1) {
         m_levelsLayer->setVisible(true);
         m_creditsLayer->setVisible(false);
+        m_debugLayer->setVisible(false);
+        m_forwardTabMenu->setVisible(true);
         m_backTabMenu->setVisible(true);
+        //m_forwardTabMenu->setVisible(false);
+    }
+
+    if(m_tab == 2) {
+        m_levelsLayer->setVisible(false);
+        m_creditsLayer->setVisible(false);
+        m_debugLayer->setVisible(true);
         m_forwardTabMenu->setVisible(false);
+        m_backTabMenu->setVisible(true);
     }
 }
 

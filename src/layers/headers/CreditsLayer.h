@@ -6,8 +6,10 @@ protected:
     bool setup(std::string const& value) override;
     void setupCreditsTab();
     void setupLevelsTab();
+    void setupDebugTab();
     void changeTab();
     void onChangeTab(CCObject* sender);
+    void onResetGameVar(CCObject* sender);
 
     CCMenuItemSpriteExtra* m_forwardTabBtn = nullptr;
     CCMenuItemSpriteExtra* m_backTabBtn = nullptr;
@@ -17,6 +19,8 @@ protected:
 
     CCLayer* m_creditsLayer = nullptr;
     CCLayer* m_levelsLayer = nullptr;
+    CCLayer* m_debugLayer = nullptr;
+    
     int m_tab = 0;
 public:
     static CreditsLayer* create(std::string const& title);

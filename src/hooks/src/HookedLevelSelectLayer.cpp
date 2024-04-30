@@ -9,7 +9,6 @@ bool HookedLevelSelectLayer::init(int pageID) {
     auto GM = GameManager::sharedState();
 
     if(GSM->getStat("8") >= 20 && !GM->getUGV("52")) {
-        setKeypadEnabled(false);
         auto delay = CCDelayTime::create(0.5f);
         auto func = CCCallFunc::create(this, callfunc_selector(HookedLevelSelectLayer::createGoldCoinDialog));
         this->runAction(CCSequence::create(delay, func, 0));
@@ -43,10 +42,10 @@ CCArray* HookedLevelSelectLayer::getGoldCoinDialog() {
 
 void HookedLevelSelectLayer::createGoldCoinDialog() {
     auto dl = DialogLayer::createDialogLayer(nullptr, getGoldCoinDialog(), 4);
+    dl->setZOrder(9999);
     dl->animateInRandomSide();
-    CCScene::get()->addChild(dl);
-    //GameManager::get()->setUGV("52", true);
-    setKeypadEnabled(true);
+    this->addChild(dl);
+    GameManager::get()->setUGV("52", true);
 }
 
 void HookedLevelSelectLayer::onPrev(CCObject* sender) {
