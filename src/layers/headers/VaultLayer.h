@@ -3,7 +3,7 @@
 #include <Geode/ui/TextInput.hpp>
 
 class VaultLayer : public CCLayer {
-protected: //members go here
+protected:
     TextInput* m_textInput = nullptr;
     CCLabelBMFont* m_title = nullptr;
     CCSprite* m_lunarMasterSpr = nullptr;
@@ -11,11 +11,13 @@ protected: //members go here
     CCSprite* m_bg = nullptr;
     CCLabelBMFont* m_response = nullptr;
     CCSprite* m_throneSpr = nullptr;
+    CCParticleSystemQuad* m_throneParticles = nullptr;
     CCLabelBMFont* m_throneLabel = nullptr;
     CCMenuItemSpriteExtra* m_throneBtn = nullptr;
     CCMenu* m_throneMenu = nullptr;
     int m_messageID;
     int m_messageIndex;
+
 public:
     bool init();
     static VaultLayer* create();

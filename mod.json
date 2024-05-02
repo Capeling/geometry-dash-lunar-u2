@@ -15,6 +15,7 @@
 	"description": "",
 	"resources": {
 		"files": [
+			"resources/particles/*.plist",
 			"resources/levels/*.txt",
 			"resources/songs/*.mp3",
 			"resources/songs/normal/*.mp3",

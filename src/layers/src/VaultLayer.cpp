@@ -53,6 +53,13 @@ bool VaultLayer::init() {
     m_throneBtn->m_colorEnabled = true;
     m_throneBtn->m_colorDip = 100.f;
 
+    auto dict = CCDictionary::createWithContentsOfFileThreadSafe("crystalEffect.plist"_spr);
+
+    m_throneParticles = CCParticleSystemQuad::create();
+    m_throneParticles->initWithDictionary(dict, false);
+
+    m_throneParticles->setPosition(m_throneBtn->getPosition());
+
     m_throneLabel = CCLabelBMFont::create("Throne\nRoom", "goldFont.fnt");
     m_throneLabel->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
     m_throneLabel->setPosition({0.f, 65.f});
@@ -61,6 +68,7 @@ bool VaultLayer::init() {
     m_throneMenu = CCMenu::create();
     m_throneMenu->addChild(m_throneBtn);
     m_throneMenu->addChild(m_throneLabel);
+    //m_throneMenu->addChild(m_throneParticles);
 
     auto backMenu = CCMenu::create();
     backMenu->addChild(backBtn);

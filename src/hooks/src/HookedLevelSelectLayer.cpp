@@ -9,7 +9,7 @@ bool HookedLevelSelectLayer::init(int pageID) {
     auto GM = GameManager::sharedState();
 
     if(GSM->getStat("8") >= 20 && !GM->getUGV("52")) {
-        auto delay = CCDelayTime::create(0.5f);
+        auto delay = CCDelayTime::create(0.4f);
         auto func = CCCallFunc::create(this, callfunc_selector(HookedLevelSelectLayer::createGoldCoinDialog));
         this->runAction(CCSequence::create(delay, func, 0));
     }
