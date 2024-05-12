@@ -45,7 +45,7 @@ bool VaultLayer::init() {
     auto backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
     auto backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(VaultLayer::onClose));
 
-    m_throneSpr = CCSprite::createWithSpriteFrameName("GJL_lunarThrone_001.png"_spr);
+    /*m_throneSpr = CCSprite::createWithSpriteFrameName("GJL_lunarThrone_001.png"_spr);
     m_throneSpr->setScale(0.25f);
 
     m_throneBtn = CCMenuItemSpriteExtra::create(m_throneSpr, this, nullptr);
@@ -68,7 +68,7 @@ bool VaultLayer::init() {
     m_throneMenu = CCMenu::create();
     m_throneMenu->addChild(m_throneBtn);
     m_throneMenu->addChild(m_throneLabel);
-    //m_throneMenu->addChild(m_throneParticles);
+    m_throneMenu->addChild(m_throneParticles);*/
 
     auto backMenu = CCMenu::create();
     backMenu->addChild(backBtn);
@@ -80,6 +80,7 @@ bool VaultLayer::init() {
     setKeypadEnabled(true);
 
     GameManager::sharedState()->fadeInMusic("secretLoop.mp3"_spr);
+
     return true;
 }
 
@@ -133,10 +134,10 @@ void VaultLayer::onSubmit(CCObject*) {
         return updateMessageLabel(response, false);
     }
 
-    if(std::string_view(lower) == std::string_view("code")) {
+    /*if(std::string_view(lower) == std::string_view("code")) {
         response = "cG93ZXJmdWwgZXhwbG9zaW9uIG9mIGEgc3Rhcg==";
         return updateMessageLabel(response, true);
-    }
+    }*/
 
     updateMessageLabel(response, m_messageID == 3 || m_messageID == 4 || m_messageID == 5 || m_messageID == 6);
 }

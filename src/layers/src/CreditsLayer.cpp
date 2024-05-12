@@ -107,8 +107,8 @@ void CreditsLayer::setupLevelsTab() {
     auto powerGloveLevel = LevelNode::create(44, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 13, IconType::Cube);
 
     auto paybackLevel = LevelNode::create(45, "<cg>GenaMorphosis</c>: (Layout, Deco)", 14, IconType::Cube);
-    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 15, IconType::Cube);
-    auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)", 16, IconType::Cube);
+    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Deco)\n<cl>Capeling</c>: (Layout, Minor Details)", 15, IconType::Cube);
+    auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)\n<cy>Capeling</c>: (Bugfixes & Minor Details)", 16, IconType::Cube);
     auto groundZeroLevel = LevelNode::create(48, "<cg>RealToastGD</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube);
     auto ultrasonicLevel = LevelNode::create(49, "<cg>GenaMorphosis</c>: (Layout, Deco)", 2, IconType::Swing);
 
