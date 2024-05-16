@@ -3,28 +3,21 @@
 #include <Geode/modify/SongCell.hpp>
 #include <Geode/modify/EditorUI.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/modify/EditorPauseLayer.hpp>
 #include <Geode/modify/GameManager.hpp>
 #include <Geode/modify/SongsLayer.hpp>
 #include <Geode/modify/CCSprite.hpp>
-#include <Geode/modify/TextArea.hpp>
 
 class $modify(CCSprite) { //guh
 	static CCSprite* create(const char *pszFileName) {
-		if(std::string_view(pszFileName) == "dialogIcon_051.png") {
+		if(std::string_view(pszFileName) == std::string_view("dialogIcon_051.png")) {
 			return CCSprite::create("GJL_lunarDialogue_001.png"_spr);
 		}
-		if(std::string_view(pszFileName) == "dialogIcon_052.png") {
+		if(std::string_view(pszFileName) == std::string_view("dialogIcon_052.png")) {
 			return CCSprite::create("GJL_secretLunar_001.png"_spr);
 		}
 		return CCSprite::create(pszFileName);
-	}
-};
-
-class $modify(TextArea) {
-	static TextArea* create(gd::string str, char const* font, float scale, float width, cocos2d::CCPoint anchor, float lineHeight, bool disableColor) {
-		log::info("TextArea::create(\"{}\", \"{}\", {}, {}, ({}), {}, {})", str, font, scale, width, anchor, lineHeight, disableColor);
-		return TextArea::create(str, font, scale, width, anchor, lineHeight, disableColor);
 	}
 };
 
@@ -89,8 +82,10 @@ class $modify(EditorPauseLayerExt, EditorPauseLayer) {
 
 class $modify(PlayLayer) {
 	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+		if(!PlayLayer::init(level, useReplay, dontCreateObjects))
+			return false;
 		log::info("time: {}", MBO(int, level, 0x414));
-		return PlayLayer::init(level, useReplay, dontCreateObjects);
+		return true;
 	}
 };
 
