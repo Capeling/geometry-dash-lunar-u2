@@ -74,7 +74,7 @@ bool VaultLayer::init() {
     backMenu->addChild(backBtn);
     
     addChildAtPosition(backMenu, Anchor::TopLeft, ccp(25, -22), false);
-    addChildAtPosition(m_throneMenu, Anchor::BottomRight, ccp(-55, 55), false);
+    //addChildAtPosition(m_throneMenu, Anchor::BottomRight, ccp(-55, 55), false);
 
     setKeyboardEnabled(true);
     setKeypadEnabled(true);

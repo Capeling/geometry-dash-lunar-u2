@@ -8,8 +8,12 @@ protected:
     void setupLevelsTab();
     void setupDebugTab();
     void changeTab();
-    void onChangeTab(CCObject* sender);
     void onResetGameVar(CCObject* sender);
+    void onNext(CCObject*);
+    void onPrev(CCObject*);
+
+    $override
+    virtual void keyDown(cocos2d::enumKeyCodes key);
 
     CCMenuItemSpriteExtra* m_forwardTabBtn = nullptr;
     CCMenuItemSpriteExtra* m_backTabBtn = nullptr;

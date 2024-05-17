@@ -27,16 +27,14 @@ bool CreditsLayer::setup(std::string const& title) {
 
     auto forwardTabSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png");
     forwardTabSpr->setFlipX(true);
-    m_forwardTabBtn = CCMenuItemSpriteExtra::create(forwardTabSpr, this, menu_selector(CreditsLayer::onChangeTab));
-    m_forwardTabBtn->setTag(1);
+    m_forwardTabBtn = CCMenuItemSpriteExtra::create(forwardTabSpr, this, menu_selector(CreditsLayer::onNext));
 
     m_forwardTabMenu = CCMenu::create();
     m_forwardTabMenu->setPosition(director->getScreenRight() - 25, winSize.height / 2);
     m_forwardTabMenu->addChild(m_forwardTabBtn);
 
     auto backTabSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_01_001.png");
-    m_backTabBtn = CCMenuItemSpriteExtra::create(backTabSpr, this, menu_selector(CreditsLayer::onChangeTab));
-    m_backTabBtn->setTag(-1);
+    m_backTabBtn = CCMenuItemSpriteExtra::create(backTabSpr, this, menu_selector(CreditsLayer::onPrev));
 
     m_backTabMenu = CCMenu::create();
     m_backTabMenu->setPosition(director->getScreenLeft() + 25, winSize.height / 2);
@@ -58,8 +56,8 @@ void CreditsLayer::setupCreditsTab() {
     creditsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 37, 9, 12, 12, true, 18226543);
-    auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 467, 6, 3, 1, true, 10026833);
-    auto toastUser = CreditNode::create("RealToastGD", "Levels", 275, 6, 3, 0, true, 26666582);
+    auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 28, 6, 83, 72, true, 10026833);
+    auto toastUser = CreditNode::create("RealToastGD", "Levels", 339, 12, 75, 3, true, 26666582);
 
     //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
     auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
@@ -177,8 +175,13 @@ void CreditsLayer::setupDebugTab() {
     m_debugLayer->addChild(debugLabel);
 }
 
-void CreditsLayer::onChangeTab(CCObject* sender) {
-    m_tab += sender->getTag();
+void CreditsLayer::onNext(CCObject*) {
+    m_tab++;
+    changeTab();
+}
+
+void CreditsLayer::onPrev(CCObject*) {
+    m_tab--;
     changeTab();
 }
 
@@ -187,6 +190,12 @@ void CreditsLayer::onResetGameVar(CCObject* sender) {
 }
 
 void CreditsLayer::changeTab() {
+
+    if(m_tab > 2)
+        m_tab = 2;
+
+    if(m_tab < 0)
+        m_tab = 0;
 
     if(m_tab == 0) {
         m_levelsLayer->setVisible(false);
@@ -222,4 +231,14 @@ CreditsLayer* CreditsLayer::create(std::string const& title) {
     }
     CC_SAFE_DELETE(ret);
     return nullptr;
+}
+
+void CreditsLayer::keyDown(cocos2d::enumKeyCodes key) {
+    
+    if(key == enumKeyCodes::KEY_Right) 
+        onNext(nullptr);
+    if(key == enumKeyCodes::KEY_Left)
+        onPrev(nullptr);
+    
+    Popup::keyDown(key);
 }
