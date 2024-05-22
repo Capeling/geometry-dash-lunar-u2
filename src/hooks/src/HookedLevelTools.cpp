@@ -154,19 +154,19 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_coins = 3;
             break;
         case 6:
-            setLevelInfo(level, 7, GJDifficulty::Harder, 0, 0); //payback
+            setLevelInfo(level, 7, GJDifficulty::Harder, 0, 16538); //payback
             level->m_levelName = getAudioTitle(45);
             level->m_audioTrack = 45;
             level->m_coins = 3;
             break;
         case 7:
-            setLevelInfo(level, 8, GJDifficulty::Insane, 0, 0); //hyperchanged
+            setLevelInfo(level, 8, GJDifficulty::Insane, 0, 18076); //hyperchanged
             level->m_levelName = getAudioTitle(46);
             level->m_audioTrack = 46;
             level->m_coins = 3;
             break;
         case 8:
-            setLevelInfo(level, 9, GJDifficulty::Insane, 0, 0); //reverie
+            setLevelInfo(level, 9, GJDifficulty::Insane, 0, 18180); //reverie
             level->m_levelName = getAudioTitle(47);
             level->m_audioTrack = 47;
             level->m_coins = 3;
@@ -178,7 +178,7 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_coins = 3;
             break;
         case 10:
-            setLevelInfo(level, 11, GJDifficulty::Demon, 15, 0); //ultrasonic
+            setLevelInfo(level, 11, GJDifficulty::Demon, 15, 27506); //ultrasonic
             level->m_levelName = getAudioTitle(49);
             level->m_audioTrack = 49;
             level->m_coins = 3;
