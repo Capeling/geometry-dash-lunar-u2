@@ -172,7 +172,7 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_coins = 3;
             break;
         case 9:
-            setLevelInfo(level, 10, GJDifficulty::Insane, 0, 20564); //ground zero
+            setLevelInfo(level, 10, GJDifficulty::Insane, 0, 0); //ground zero
             level->m_levelName = getAudioTitle(48);
             level->m_audioTrack = 48;
             level->m_coins = 3;
