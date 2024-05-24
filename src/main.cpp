@@ -5,7 +5,6 @@
 #include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/modify/EditorPauseLayer.hpp>
-#include <Geode/modify/GameManager.hpp>
 #include <Geode/modify/SongsLayer.hpp>
 #include <Geode/modify/CCSprite.hpp>
 
@@ -18,40 +17,6 @@ class $modify(CCSprite) { //guh
 			return CCSprite::create("GJL_secretLunar_001.png"_spr);
 		}
 		return CCSprite::create(pszFileName);
-	}
-};
-
-class $modify(GameManager) {
-	gd::string sheetNameForIcon(int iconID, int iconType) {
-		if(iconType == 5) {
-			if(iconID == 2) {
-			return "robot_02"_spr;
-			}
-			if(iconID == 3) {
-			return "robot_03"_spr;
-			}
-		}
-		auto ret = GameManager::sheetNameForIcon(iconID, iconType);
-		return ret;
-	}
-	cocos2d::CCTexture2D* loadIcon(int iconID, int iconType, int _idk) {
-		if(iconID == 2) {
-			if(iconType == 1 || iconType == 2 || iconType == 3) {
-				return nullptr;
-			}
-		}
-		if(iconType == 7) {
-			if(iconID == 2 || iconID == 3) {
-				return nullptr;
-			}
-		}
-
-		if(iconType == 0) {
-			for(int i = 5; i < 31; i++) {
-				if(iconID == i) return nullptr;
-			}
-		}
-		return GameManager::loadIcon(iconID, iconType, _idk);
 	}
 };
  

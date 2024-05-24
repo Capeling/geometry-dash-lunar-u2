@@ -2,6 +2,9 @@
 
 void HookedLoadingLayer::loadingFinished() {
     CCSpriteFrameCache::get()->addSpriteFramesWithFile("IconSheetGenerated.plist"_spr);
+    CCSpriteFrameCache::get()->addSpriteFramesWithFile("robot_02.plist"_spr);
+    CCSpriteFrameCache::get()->addSpriteFramesWithFile("robot_03.plist"_spr);
+    
     LoadingLayer::loadingFinished();
 }
 

@@ -2,6 +2,7 @@
 #include "../../utils/WorkingDialogObject.h"
 #include "../../layers/headers/CreditsLayer.h"
 #include "../../nodes/headers/SavePopup.h"
+#include "../headers/HookedGameManager.h"
 
 bool HookedMenuLayer::init() {
     if(!MenuLayer::init())
@@ -30,7 +31,7 @@ bool HookedMenuLayer::init() {
 }
 
 void HookedMenuLayer::onCreator(CCObject* sender) {
-    return MenuLayer::onCreator(sender);
+    //return MenuLayer::onCreator(sender);
 
     auto dl = DialogLayer::createDialogLayer(nullptr, getDialogArray(), 2);
     dl->animateIn(DialogAnimationType::FromLeft);
@@ -50,9 +51,8 @@ void HookedMenuLayer::keyDown(enumKeyCodes keyCode) {
 CCArray* HookedMenuLayer::getDialogArray() {
     CCArray* array = CCArray::create();
 
-    array->addObject(WorkingDialogObject::create("Scratch", "<cr><s190>STOP!</s></c> <d040><cl>He</c> will notice that.", 14, 1, false, {255, 255, 255}));
-    array->addObject(WorkingDialogObject::create("Scratch", "Its too <cr>risky</c>, <d020>you can't go right now.", 8, 1, false, {255, 255, 255}));
-    array->addObject(WorkingDialogObject::create("Scratch", "Leave <cl>Lunar</c>, <d030>and I will let you <cg>through.<d030>.<d030>.</c>", 12, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "You can't go there.", 52, 1, false, {255, 255, 255}));
+    array->addObject(WorkingDialogObject::create("???", "Leave <cl>Lunar</c>, <d040>and I will let you through<d020>.<d020>.<d020>.", 52, 1, false, {255, 255, 255}));
     
     return array;
 }
