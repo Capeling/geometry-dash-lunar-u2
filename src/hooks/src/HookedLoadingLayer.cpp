@@ -4,6 +4,21 @@ void HookedLoadingLayer::loadingFinished() {
     CCSpriteFrameCache::get()->addSpriteFramesWithFile("IconSheetGenerated.plist"_spr);
     CCSpriteFrameCache::get()->addSpriteFramesWithFile("robot_02.plist"_spr);
     CCSpriteFrameCache::get()->addSpriteFramesWithFile("robot_03.plist"_spr);
+
+    auto GSM = GameStatsManager::sharedState();
+
+    auto GLM = GameLevelManager::sharedState();
+    
+    GSM->checkCoinAchievement(GLM->getMainLevel(1, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(2, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(3, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(4, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(5, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(6, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(7, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(8, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(9, false));
+    GSM->checkCoinAchievement(GLM->getMainLevel(10, false));
     
     LoadingLayer::loadingFinished();
 }
