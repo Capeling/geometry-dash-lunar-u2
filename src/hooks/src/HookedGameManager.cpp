@@ -1,19 +1,29 @@
 #include "../headers/HookedGameManager.h"
 
 gd::string HookedGameManager::sheetNameForIcon(int iconID, int iconType) {
-    return GameManager::sheetNameForIcon(iconID, iconType);
+    if(iconType == 5) {
+        if(iconID == 2) {
+        return "robot_02"_spr;
+        }
+        if(iconID == 3) {
+        return "robot_03"_spr;
+        }
+    }
+    auto ret = GameManager::sheetNameForIcon(iconID, iconType);
+    return ret;
 }
+
 CCTexture2D* HookedGameManager::loadIcon(int iconID, int iconType, int _idk) {
     if(iconID == 2) {
         if(iconType == 1 || iconType == 2 || iconType == 3 || iconType == 7 || iconType == 8) {
             return nullptr;
         }
     }
-    if(iconType == 5) {
-        if(iconID == 2 || iconID == 3) {
-            return nullptr;
-        }
-    }
+    //if(iconType == 5) {
+    //    if(iconID == 2 || iconID == 3) {
+    //        return nullptr;
+    //    }
+    //}
 
     if(iconType == 0) {
         if(iconID < 31 && iconID > 12) {
