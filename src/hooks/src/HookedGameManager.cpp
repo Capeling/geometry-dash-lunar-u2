@@ -9,7 +9,7 @@ CCTexture2D* HookedGameManager::loadIcon(int iconID, int iconType, int _idk) {
             return nullptr;
         }
     }
-    if(iconType == 6) {
+    if(iconType == 5) {
         if(iconID == 2 || iconID == 3) {
             return nullptr;
         }
