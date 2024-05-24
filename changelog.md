@@ -1,11 +1,9 @@
 # Geometry Dash: Lunar Changelog
 ## v2.0.0
 - New main levels "Power Glove", "Payback", "Reverie", "Ground Zero" and "Ultrasonic"
-- 4 platformer levels
 - New achievements
 - New icons
 - New vault
-- The "Throne Room"
 - New credits menu
 ## v1.0.5
 - Added Lunar and Genamorphosis logo to loading screen
