@@ -55,9 +55,9 @@ void CreditsLayer::setupCreditsTab() {
     auto creditsLabel = CCLabelBMFont::create("Credits", "bigFont.fnt");
     creditsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
-    auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 37, 9, 12, 12, true, 18226543);
+    auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 70, 41, 12, 12, true, 18226543);
     auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 28, 6, 83, 72, true, 10026833);
-    auto toastUser = CreditNode::create("RealToastGD", "Levels", 339, 12, 75, 3, true, 26666582);
+    auto toastUser = CreditNode::create("RealToastGD", "Levels\nHypercharged Remix", 339, 12, 75, 3, true, 26666582);
 
     //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
     auto andrexelUser = CreditNode::create("Andrexel", "Levels", 114, 8, 11, 70, true, 8327873);
@@ -191,8 +191,8 @@ void CreditsLayer::onResetGameVar(CCObject* sender) {
 
 void CreditsLayer::changeTab() {
 
-    if(m_tab > 2)
-        m_tab = 2;
+    if(m_tab > 1)
+        m_tab = 1;
 
     if(m_tab < 0)
         m_tab = 0;
@@ -209,7 +209,7 @@ void CreditsLayer::changeTab() {
         m_levelsLayer->setVisible(true);
         m_creditsLayer->setVisible(false);
         m_debugLayer->setVisible(false);
-        m_forwardTabMenu->setVisible(true);
+        m_forwardTabMenu->setVisible(false);
         m_backTabMenu->setVisible(true);
         //m_forwardTabMenu->setVisible(false);
     }
