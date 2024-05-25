@@ -1,4 +1,7 @@
 # Geometry Dash: Lunar Changelog
+## v2.0.2
+- Updated Payback
+- Updated Ultrasonic
 ## v2.0.1
 - Removes start pos from Ground Zero
 ## v2.0.0
