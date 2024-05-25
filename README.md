@@ -1,6 +1,6 @@
 # **Geometry Dash: Lunar**
 
-Geometry Dash: Lunar is a fanmade Geometry Dash spinoff containing 6 brand new levels, new icons, new achievements and more!
+Geometry Dash: Lunar is a fanmade Geometry Dash spinoff containing 10 brand new levels, new icons, new achievements and more!
 
 A non-copyright texture pack is available to download on the [GitHub](https://github.com/Capeling/geometry-dash-lunar-u2)
 
