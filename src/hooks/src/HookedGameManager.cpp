@@ -38,7 +38,7 @@ void HookedGameManager::reportPercentageForLevel(int levelID, int percent, bool 
     GameManager::reportPercentageForLevel(levelID, percent, isPractice);
     log::info("hi: {}, {}, {}", levelID, percent, isPractice);
 
-    if(levelID == 10 && !isPractice && percent >= 60)
+    if(levelID == 10 && !isPractice && percent >= 60 && percent < 100)
         GameManager::sharedState()->reportAchievementWithID("geometry.ach.lunar.percent01", 100, false);
 }
 

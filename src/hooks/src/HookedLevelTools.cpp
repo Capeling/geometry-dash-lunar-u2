@@ -1,25 +1,7 @@
 #include "../headers/HookedLevelTools.h"
 
 bool HookedLevelTools::verifyLevelIntegrity(gd::string verifyString, int levelID) {
-    bool isValid = false;
-    switch(levelID) {
-        case 1:
-            if(verifyString.size() == 1029093) isValid = true;
-            break;
-        case 2:
-            if(verifyString.size() == 2161744) isValid = true;
-            break;
-        case 3:
-            if(verifyString.size() == 3873233) isValid = true;
-            break;
-        case 4: 
-            if(verifyString.size() == 4414142) isValid = true;
-            break;
-        default:
-            isValid = true;
-            break;
-    }
-    return isValid;
+    return true;
 }
 
 gd::string HookedLevelTools::getAudioTitle(int audioID) {
@@ -39,6 +21,7 @@ gd::string HookedLevelTools::getAudioTitle(int audioID) {
 }
 
 gd::string HookedLevelTools::getAudioFileName(int audioID) {
+    if(audioID == 49) return "Ultrasonic.mp3"_spr;
     switch(audioID) {
         case 40: return "Active.mp3"_spr; //active
         case 41: return "ThunderZone.mp3"_spr; //thunderzone
