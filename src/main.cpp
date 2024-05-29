@@ -54,7 +54,22 @@ class $modify(PlayLayer) {
 	}
 };
 
-class $modify(EditorUI) {
+class $modify(HookedEditorUI, EditorUI) {
+
+	struct Fields {
+		CCSprite* m_jumpscareSprite = nullptr;
+		CCLayerColor* m_jumpscareBG = nullptr;
+	};
+
+	bool init(LevelEditorLayer* editorLayer) {
+		bool init = EditorUI::init(editorLayer);
+		if(init) {
+			auto delay = CCDelayTime::create(0.2f);
+        	auto func = CCCallFunc::create(this, callfunc_selector(HookedEditorUI::createJumpscare));
+        	this->runAction(CCSequence::create(delay, func, 0));
+		}
+		return init;
+	}
 	void setupCreateMenu() {
 		EditorUI::setupCreateMenu();
     	auto m_tab8 = (EditButtonBar*)this->m_createButtonBars->objectAtIndex(8);
@@ -66,6 +81,32 @@ class $modify(EditorUI) {
     	int columnCount = GM->getIntGameVariable("0050");
 
 		m_tab8->reloadItems(rowCount, columnCount);
+	}
+	void createJumpscare() {
+		m_fields->m_jumpscareBG = CCLayerColor::create({0, 0, 0, 255});
+		m_fields->m_jumpscareSprite = CCSprite::createWithSpriteFrameName("jumpscare.png"_spr);
+		m_fields->m_jumpscareSprite->setScale(0.1f);
+		m_fields->m_jumpscareSprite->setPosition(CCDirector::get()->getWinSize() / 2);
+		addChild(m_fields->m_jumpscareBG, 99999);
+		addChild(m_fields->m_jumpscareSprite, 99999);
+
+		auto scale = CCScaleTo::create(0.1f, 2.375f);
+		auto ease = CCEaseInOut::create(scale, 2.f);
+		auto audio = CCCallFunc::create(this, callfunc_selector(HookedEditorUI::playJumpAudio));
+		auto delay = CCDelayTime::create(1.f);
+		auto remove = CCCallFunc::create(this, callfunc_selector(HookedEditorUI::removeJumpscare));
+		m_fields->m_jumpscareSprite->runAction(CCSequence::create(ease, audio, delay, remove, 0));
+	}
+	void removeJumpscare() {
+		if(m_fields->m_jumpscareSprite) {
+			m_fields->m_jumpscareSprite->removeFromParent();
+		}
+		if(m_fields->m_jumpscareBG) {
+			m_fields->m_jumpscareBG->removeFromParent();
+		}
+	}
+	void playJumpAudio() {
+		FMODAudioEngine::sharedEngine()->playEffect("jumpscareAudio.mp3"_spr);
 	}
 };
 
@@ -151,6 +192,8 @@ $on_mod(Loaded) {
 	patchLevelsWin(10, 1);
 	patchSongsLayerWin();
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x23b7ef), { 0x90, 0x90, 0x90, 0x90, 0x90 });
+	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x23bdd3), { 0x90, 0x90, 0x90, 0x90, 0x90 });
+	PatchTool::patch(0x2e1408, {0x90,0x90,0x90,0x90,0x90,0x90}); //Doesnt remove coin XD FINALLY
 	Mod::get()->patch(reinterpret_cast<void*>(base::get() + 0x23bdd3), { 0x90, 0x90, 0x90, 0x90, 0x90 });
 	#endif
 

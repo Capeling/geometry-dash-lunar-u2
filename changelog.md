@@ -2,6 +2,7 @@
 ## v2.0.2
 - Updated Payback
 - Updated Ultrasonic
+- Added level ID's and the list ID to the credits menu
 ## v2.0.1
 - Removes start pos from Ground Zero
 ## v2.0.0

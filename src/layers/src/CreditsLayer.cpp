@@ -98,17 +98,24 @@ void CreditsLayer::setupLevelsTab() {
     auto levelsLabel = CCLabelBMFont::create("Levels", "bigFont.fnt");
     levelsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
-    auto activeLevel = LevelNode::create(40, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", 5, IconType::Cube);
-    auto thunderZoneLevel = LevelNode::create(41, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 6, IconType::Cube);
-    auto earthSplitterLevel = LevelNode::create(42, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 7, IconType::Cube);
-    auto spaceBattleLevel = LevelNode::create(43, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", 8, IconType::Cube);
-    auto powerGloveLevel = LevelNode::create(44, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 13, IconType::Cube);
+    //268402
+    auto listLabel = CCLabelBMFont::create("Online list ID: 268402", "chatFont.fnt");
+    listLabel->setPosition({winSize.width / 2, (winSize.height / 2) - 123});
+    listLabel->setScale(0.5f);
+    listLabel->setOpacity(255 / 2);
+    m_levelsLayer->addChild(listLabel);
 
-    auto paybackLevel = LevelNode::create(45, "<cg>GenaMorphosis</c>: (Layout, Deco)", 14, IconType::Cube);
-    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Deco)\n<cl>Capeling</c>: (Layout, Minor Details)", 15, IconType::Cube);
-    auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)\n<cy>Capeling</c>: (Bugfixes & Minor Details)", 16, IconType::Cube);
-    auto groundZeroLevel = LevelNode::create(48, "<cg>RealToastGD</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube);
-    auto ultrasonicLevel = LevelNode::create(49, "<cg>GenaMorphosis</c>: (Layout, Deco)", 2, IconType::Swing);
+    auto activeLevel = LevelNode::create(40, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Bugfixes)", 5, IconType::Cube, 102794116);
+    auto thunderZoneLevel = LevelNode::create(41, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 6, IconType::Cube, 102793978);
+    auto earthSplitterLevel = LevelNode::create(42, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 7, IconType::Cube, 102793986);
+    auto spaceBattleLevel = LevelNode::create(43, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>FatzFries</c>: (Boss Design)", 8, IconType::Cube, 102794046);
+    auto powerGloveLevel = LevelNode::create(44, "<cg>GenaMorphosis</c>: (Layout, Deco)\n<cl>Capeling</c>: (Camera Improvements)", 13, IconType::Cube, 105680408);
+
+    auto paybackLevel = LevelNode::create(45, "<cg>GenaMorphosis</c>: (Layout, Deco)", 14, IconType::Cube, 105680505);
+    auto hyperchargedLevel = LevelNode::create(46, "<cg>GenaMorphosis</c>: (Deco)\n<cl>Capeling</c>: (Layout, Minor Details)", 15, IconType::Cube, 105680423);
+    auto reverieLevel = LevelNode::create(47, "<cg>Andrexel</c>: (Deco)\n<cl>GenaMorphosis</c>: (Layout)\n<cy>Capeling</c>: (Bugfixes & Minor Details)", 16, IconType::Cube, 105680313);
+    auto groundZeroLevel = LevelNode::create(48, "<cg>RealToastGD</c>: (Deco)\n<cl>Capeling</c>: (Layout)", 17, IconType::Cube, 105685405);
+    auto ultrasonicLevel = LevelNode::create(49, "<cg>GenaMorphosis</c>: (Layout, Deco)", 2, IconType::Swing, 105680463);
 
     CCArray* row1LevelArray = CCArray::create();
     CCArray* row2LevelArray = CCArray::create();
@@ -145,6 +152,7 @@ void CreditsLayer::setupLevelsTab() {
 
     m_levelsLayer->addChild(levelsLabel);
     m_levelsLayer->addChild(levelsMenu);
+
 }
 
 void CreditsLayer::setupDebugTab() {

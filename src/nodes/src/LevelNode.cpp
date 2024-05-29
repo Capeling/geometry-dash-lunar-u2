@@ -1,8 +1,8 @@
 #include "../headers/LevelNode.h"
 
-LevelNode* LevelNode::create(int audioID, std::string infoDesc, int iconID, IconType iconType) {
+LevelNode* LevelNode::create(int audioID, std::string infoDesc, int iconID, IconType iconType, int levelID) {
     auto ret = new LevelNode();
-    if(ret && ret->init(audioID, infoDesc, iconID, iconType)) {
+    if(ret && ret->init(audioID, infoDesc, iconID, iconType, levelID)) {
         ret->autorelease();
         return ret;
     }
@@ -10,7 +10,7 @@ LevelNode* LevelNode::create(int audioID, std::string infoDesc, int iconID, Icon
     return nullptr;
 }
 
-bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType iconType) {
+bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType iconType, int levelID) {
     if(!CCNode::init())
         return false;
 
@@ -42,6 +42,7 @@ bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType ico
     addChild(buttonMenu);
 
     m_audioID = audioID;
+    m_levelID = levelID;
     m_infoDesc = infoDesc;
 
     setID("audio-"_spr + std::to_string(audioID) + "-level-node");
@@ -51,7 +52,7 @@ bool LevelNode::init(int audioID, std::string infoDesc, int iconID, IconType ico
 
 void LevelNode::onInfo(CCObject* sender) {
 
-    auto string = fmt::format("{}\n\n<cj>Song</c>: {} by <cp>{}</c>", m_infoDesc, LevelTools::getAudioTitle(m_audioID), LevelTools::nameForArtist(LevelTools::artistForAudio(m_audioID)));
+    auto string = fmt::format("<cy>Online Level ID</c>: {}\n\n{}\n\n<cj>Song</c>: {} by <cp>{}</c>", m_levelID, m_infoDesc, LevelTools::getAudioTitle(m_audioID), LevelTools::nameForArtist(LevelTools::artistForAudio(m_audioID)));
 
     FLAlertLayer::create(LevelTools::getAudioTitle(m_audioID).c_str(), string.c_str(), "OK")->show();
 }
