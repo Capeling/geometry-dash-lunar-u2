@@ -53,6 +53,7 @@ bool VaultLayer::init() {
     m_throneBtn->m_colorEnabled = true;
     m_throneBtn->m_colorDip = 100.f;
 
+
     auto dict = CCDictionary::createWithContentsOfFileThreadSafe("crystalEffect.plist"_spr);
 
     m_throneParticles = CCParticleSystemQuad::create();
@@ -70,10 +71,37 @@ bool VaultLayer::init() {
     m_throneMenu->addChild(m_throneLabel);
     m_throneMenu->addChild(m_throneParticles);*/
 
+    m_ruinLabel = CCLabelBMFont::create("Ancient\nRuins", "bigFont.fnt");
+    m_ruinLabel->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
+    m_ruinLabel->setPosition({0.5f, 37.f});
+    m_ruinLabel->setAnchorPoint({0.5f, 0.5f});
+    m_ruinLabel->setScale(0.4f);
+
+    m_ruinSpr = CCSprite::createWithSpriteFrameName("GJ_playBtn2_001.png");
+    m_ruinSpr->setScale(0.5f);
+
+    m_ruinBtn = CCMenuItemSpriteExtra::create(m_ruinSpr, this, menu_selector(VaultLayer::onRuin));
+
+
+    m_ruinMenu = CCMenu::create();
+
+    m_coinArray = CCArray::create();
+    for(int i = 0; i < 3; i++) {
+        bool isActive = GameStatsManager::sharedState()->hasSecretCoin(fmt::format("{}_{}", 6001, i + 1).c_str());
+        auto node = CCSprite::createWithSpriteFrameName(isActive ? "goldcoin_small01_001.png"_spr : "goldcoin_small02_001.png"_spr);
+        m_coinArray->addObject(node);
+        m_ruinMenu->addChild(node);
+    }
+    m_ruinMenu->addChild(m_ruinBtn);
+    m_ruinMenu->addChild(m_ruinLabel);
+
+    GameToolbox::alignItemsHorisontally(m_coinArray, 13.f, {0.f, -29.f}, true);
+
     auto backMenu = CCMenu::create();
     backMenu->addChild(backBtn);
     
     addChildAtPosition(backMenu, Anchor::TopLeft, ccp(25, -22), false);
+    addChildAtPosition(m_ruinMenu, Anchor::BottomRight, ccp(-55, 55), false);
     //addChildAtPosition(m_throneMenu, Anchor::BottomRight, ccp(-55, 55), false);
 
     setKeyboardEnabled(true);
@@ -92,6 +120,21 @@ void VaultLayer::updateMessageLabel(std::string message, bool isSpecial) {
     } else {
         m_response->setColor({255, 255, 255});
     }
+}
+
+void VaultLayer::onRuin(CCObject*) {
+    FMODAudioEngine::sharedEngine()->playEffect("playSound_01.ogg", 1.0, 0.0, 0.3);
+    auto color = CCLayerColor::create({0, 0, 0, 255});
+    addChild(color, 90);
+    color->runAction(CCFadeIn::create(0.5f));
+    runAction(CCSequence::create(CCDelayTime::create(FMODAudioEngine::sharedEngine()->fadeOutMusic(0.5f, 0)), CCCallFunc::create(this, callfunc_selector(VaultLayer::playStep1)), 0));
+}
+
+void VaultLayer::playStep1() {
+    auto level = GameLevelManager::get()->getMainLevel(6001, true);
+    level->m_levelString = LocalLevelManager::get()->getMainLevelString(6001);
+    log::info("id: {}", level->m_songID);
+    CCDirector::get()->replaceScene(CCTransitionFade::create(0.5f, PlayLayer::scene(level, false, false)));
 }
 
 void VaultLayer::onSubmit(CCObject*) {

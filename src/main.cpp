@@ -7,6 +7,15 @@
 #include <Geode/modify/EditorPauseLayer.hpp>
 #include <Geode/modify/SongsLayer.hpp>
 #include <Geode/modify/CCSprite.hpp>
+#include <Geode/modify/FMODAudioEngine.hpp>
+#include "layers/headers/VaultLayer.h"
+
+class $modify(FMODAudioEngine) {
+	float fadeOutMusic(float p0, int p1) {
+		log::info("p0: {}, p1: {}", p0, p1);
+		return FMODAudioEngine::fadeOutMusic(p0, p1);
+	}
+};
 
 class $modify(CCSprite) { //guh
 	static CCSprite* create(const char *pszFileName) {
@@ -49,7 +58,7 @@ class $modify(PlayLayer) {
 	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
 		if(!PlayLayer::init(level, useReplay, dontCreateObjects))
 			return false;
-		log::info("time: {}", MBO(int, level, 0x414));
+		log::info("time: {}, length: {}, songID: {}", MBO(int, level, 0x414), level->m_levelLength, level->m_songID);
 		return true;
 	}
 };

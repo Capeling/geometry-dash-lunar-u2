@@ -166,6 +166,14 @@ GJGameLevel* HookedLevelTools::getLevel(int levelID, bool loaded) {
             level->m_audioTrack = 49;
             level->m_coins = 3;
             break;
+        case 5001:
+            return LevelTools::getLevel(5001, loaded);
+        case 6001:
+            setLevelInfo(level, 3, GJDifficulty::Hard, 0, 0);
+            level->m_levelName = "Ancient Ruins";
+            level->m_coins = 3;
+            level->m_levelLength = 5;
+            break;
     }
     if (!loaded) {
         level->m_levelString = LocalLevelManager::sharedState()->getMainLevelString(levelID);

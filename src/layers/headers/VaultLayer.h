@@ -15,6 +15,12 @@ protected:
     CCLabelBMFont* m_throneLabel = nullptr;
     CCMenuItemSpriteExtra* m_throneBtn = nullptr;
     CCMenu* m_throneMenu = nullptr;
+
+    CCSprite* m_ruinSpr = nullptr;
+    CCLabelBMFont* m_ruinLabel = nullptr;
+    CCMenuItemSpriteExtra* m_ruinBtn = nullptr;
+    CCMenu* m_ruinMenu = nullptr;
+    CCArray* m_coinArray = nullptr;
     int m_messageID;
     int m_messageIndex;
 
@@ -25,7 +31,10 @@ public:
 
     void onClose(CCObject*);
     void onSubmit(CCObject*);
+    void onRuin(CCObject*);
     
+    void playStep1();
+
     void keyBackClicked();
     void updateMessageLabel(std::string string, bool isSpecial);
 

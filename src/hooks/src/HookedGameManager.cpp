@@ -1,4 +1,5 @@
 #include "../headers/HookedGameManager.h"
+#include "../../layers/headers/VaultLayer.h"
 
 gd::string HookedGameManager::sheetNameForIcon(int iconID, int iconType) {
     if(iconType == 5) {
@@ -60,6 +61,14 @@ void HookedGameManager::checkForUltAch() {
     if(coinPercent1 + coinPercent2 + coinPercent3 + coinPercent4 + coinPercent5 + coinPercent6 + coinPercent7 + coinPercent8 + coinPercent9 + coinPercent10 == 1000) {
         GameManager::sharedState()->reportAchievementWithID("geometry.ach.lunar.ultimate", 100, false);
     }
+}
+
+void HookedGameManager::returnToLastScene(GJGameLevel* level) {
+    if(level->m_levelID == 6001) {
+        CCDirector::get()->replaceScene(CCTransitionFade::create(0.5f, VaultLayer::scene()));
+        return;
+    }
+    GameManager::returnToLastScene(level);
 }
 
 void HookedGameManager::dataLoaded(DS_Dictionary* dict) {

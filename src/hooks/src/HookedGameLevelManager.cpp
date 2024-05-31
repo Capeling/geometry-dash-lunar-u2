@@ -16,6 +16,11 @@ GJGameLevel* HookedGameLevelManager::getMainLevel(int levelID, bool _isLoaded) {
             level->m_creatorName = "RealToastGD";
             level->m_accountID = 26666582;
             break;
+        case 6001:
+            level->m_creatorName = "GenaMorphosis";
+            level->m_accountID = 10026833;
+            level->m_songID = 10005797;
+            break;
     }
     return level;
 }

@@ -4,7 +4,7 @@
 		"win": "2.204",
 		"android": "2.205"
 	},
-	"version": "v2.0.2",
+	"version": "v2.0.3",
 	"id": "capeling.geometry-dash-lunar",
 	"name": "Geometry Dash: Lunar",
 	"developers": [
@@ -34,7 +34,9 @@
 			"resources/icons/update2/robot_02/*.png",
 			"resources/icons/update2/robot_02/*.plist",
 			"resources/icons/update2/robot_03/*.png",
-			"resources/icons/update2/robot_03/*.plist"
+			"resources/icons/update2/robot_03/*.plist",
+			"resources/plat/sfx/*.ogg",
+			"resources/plat/songs/*.ogg"
 		],
 		"spritesheets": {
 			"LunarSheet": [

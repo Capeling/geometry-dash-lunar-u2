@@ -1,6 +1,7 @@
 #include "../headers/HookedMenuLayer.h"
 #include "../../utils/WorkingDialogObject.h"
 #include "../../layers/headers/CreditsLayer.h"
+#include "../../layers/headers/VaultLayer.h"
 #include "../../nodes/headers/SavePopup.h"
 #include "../headers/HookedGameManager.h"
 
@@ -45,6 +46,14 @@ void HookedMenuLayer::onMoreGames(CCObject*) {
 }
 
 void HookedMenuLayer::keyDown(enumKeyCodes keyCode) {
+    if(keyCode == enumKeyCodes::KEY_T) {
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, VaultLayer::scene()));
+    }
+    if(keyCode == enumKeyCodes::KEY_Y) {
+        auto scene = CCScene::create();
+        scene->addChild(LevelAreaLayer::create());
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, scene));
+    }
     MenuLayer::keyDown(keyCode);
 }
 
