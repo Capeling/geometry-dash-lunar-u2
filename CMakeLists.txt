@@ -1,41 +1,36 @@
 cmake_minimum_required(VERSION 3.21)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_OSX_ARCHITECTURES "x86_64")
+set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 project(geometry-dash-lunar VERSION 1.0.0)
 
-# Check for debug build
-option(ENABLE_DEBUG "Debug mode" OFF)
+option(ENABLE_DEBUG "Enable debug" OFF)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR "${CMAKE_BUILD_TYPE}asdf" STREQUAL "asdf" OR ENABLE_DEBUG)
-    set(LUNAR_IS_DEBUG ON)
-endif()
-
-# Debug/Release options
-if (LUNAR_IS_DEBUG)
-    add_compile_definitions(LUNAR_DEBUG=1)
-    add_compile_definitions(GEODE_DEBUG=1)
+if(ENABLE_DEBUG)
+    add_compile_definitions(ENABLE_TESTS=1)
+    add_compile_definitions(DEBUG_ENABLED=1)
 else()
-    # Enable LTO in release (2.5x less binary size, costs only a few extra seconds of build time)
-    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #THANKS DANK_MEME I LOVE YOU
+    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
 endif()
 
 # source files
 file(GLOB_RECURSE SOURCES
-	src/main.cpp
-    src/hooks/src/*.cpp
-    src/defs/*.cpp
-    src/utils/*.cpp
-    src/layers/src/*.cpp
-    src/nodes/src/*.cpp
+	src/*.cpp
     ${OS_SOURCES}
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-set(GEODE_BINDINGS_REPO_PATH "S:/GitHub/Geode/bindings")
+target_include_directories(${PROJECT_NAME} PUBLIC
+    include
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+    include/lunar
+)
+
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
 else()
