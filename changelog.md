@@ -1,4 +1,9 @@
 # Geometry Dash: Lunar Changelog
+## v2.0.6
+- Updated ThunderZone
+- Updated Ancient Ruins
+- Removed some logs
+- Added Time Reborn popup
 ## v2.0.5
 - Updated for 2.207
 ## v2.0.4

@@ -31,9 +31,11 @@ class $modify(HookedEditorUI, EditorUI) {
 	bool init(LevelEditorLayer* editorLayer) {
 		bool init = EditorUI::init(editorLayer);
 		if(init) {
+			#ifndef DEBUG_ENABLED
 			auto delay = CCDelayTime::create(0.2f);
         	auto func = CCCallFunc::create(this, callfunc_selector(HookedEditorUI::createJumpscare));
         	this->runAction(CCSequence::create(delay, func, 0));
+			#endif
 		}
 		return init;
 	}

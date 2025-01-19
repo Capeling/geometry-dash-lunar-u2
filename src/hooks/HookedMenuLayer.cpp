@@ -33,10 +33,13 @@ bool HookedMenuLayer::init() {
 
 void HookedMenuLayer::onCreator(CCObject* sender) {
     //return MenuLayer::onCreator(sender);
-
+    #ifndef DEBUG_ENABLED
     auto dl = DialogLayer::createDialogLayer(nullptr, getDialogArray(), 2);
     dl->animateInRandomSide();
     CCScene::get()->addChild(dl);
+    #else
+    MenuLayer::onCreator(sender);
+    #endif
 }
 
 void HookedMenuLayer::onMoreGames(CCObject*) {
@@ -44,6 +47,10 @@ void HookedMenuLayer::onMoreGames(CCObject*) {
     //alert->show();
     CreditsLayer::create()->show();
 }
+
+// void HookedMenuLayer::onPlay(CCObject*) {
+//     CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f, LunarSelectLayer::scene(0)));
+// }
 
 #ifdef DEBUG_ENABLED
 void HookedMenuLayer::keyDown(enumKeyCodes keyCode) {

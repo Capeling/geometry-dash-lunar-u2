@@ -4,6 +4,10 @@
 
 class $modify(HookedLevelPage, LevelPage) {
 
+    static void onModify(auto& self) {
+        self.setHookPriorityPost("LevelPage::updateDynamicPage", geode::Priority::First);
+    }
+
     $override
     void onTheTower(CCObject* sender);
 

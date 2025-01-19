@@ -38,6 +38,8 @@ public:
     void keyBackClicked();
     void updateMessageLabel(std::string string, bool isSpecial);
 
+    void timeReborn();
+
     std::string getBasicMessage();
     std::string getMessage();
     std::string getThreadMessage(int index, int messageID);

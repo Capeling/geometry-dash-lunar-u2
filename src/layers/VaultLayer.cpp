@@ -1,4 +1,5 @@
 #include <layers/VaultLayer.h>
+#include <Geode/utils/web.hpp>
 
 using namespace geode::prelude;
 
@@ -81,8 +82,11 @@ bool VaultLayer::init() {
 
     m_ruinBtn = CCMenuItemSpriteExtra::create(m_ruinSpr, this, menu_selector(VaultLayer::onRuin));
 
-
     m_ruinMenu = CCMenu::create();
+
+    if(!GameManager::get()->getUGV("53") && GameStatsManager::get()->hasCompletedMainLevel(6001)) {
+        runAction(CCSequence::create(CCDelayTime::create(0.6f), CCCallFunc::create(this, callfunc_selector(VaultLayer::timeReborn)), 0));
+    }
 
     m_coinArray = CCArray::create();
     for(int i = 0; i < 3; i++) {
@@ -111,6 +115,15 @@ bool VaultLayer::init() {
     return true;
 }
 
+void VaultLayer::timeReborn() {
+    createQuickPopup("To Be Continued", "To Be Continued in <cg>Geometry Dash:</c> <cy>Time Reborn</c>", "Gamejolt", "OK", [](auto, bool btn2) {
+        if(!btn2) {
+            geode::utils::web::openLinkInBrowser("https://gamejolt.com/games/timereborn/908956");
+        }
+        GameManager::get()->setUGV("53", true);
+    });
+}
+
 void VaultLayer::updateMessageLabel(std::string message, bool isSpecial) {
     m_response->setString(message.c_str());
     m_response->limitLabelWidth(320, 0.6f, 0.f);
@@ -132,7 +145,6 @@ void VaultLayer::onRuin(CCObject*) {
 void VaultLayer::playStep1() {
     auto level = GameLevelManager::get()->getMainLevel(6001, true);
     level->m_levelString = LocalLevelManager::get()->getMainLevelString(6001);
-    log::info("id: {}", level->m_songID);
     CCDirector::get()->replaceScene(CCTransitionFade::create(0.5f, PlayLayer::scene(level, false, false)));
 }
 

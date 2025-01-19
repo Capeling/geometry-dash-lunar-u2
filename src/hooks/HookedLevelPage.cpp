@@ -29,22 +29,28 @@ void HookedLevelPage::onTheTower(CCObject* sender) {
 void HookedLevelPage::updateDynamicPage(GJGameLevel* level) {
     LevelPage::updateDynamicPage(level);
 
-    CCSpriteFrameCache* SFC = CCSpriteFrameCache::sharedSpriteFrameCache();
 
     if(level->m_levelID == -2) {
-        CCMenu* towerMenu = getChildByType<CCMenu>(1);
-        CCMenuItemSpriteExtra* towerBtn = towerMenu->getChildByType<CCMenuItemSpriteExtra>(0);
+        CCSpriteFrameCache* SFC = CCSpriteFrameCache::sharedSpriteFrameCache();
 
-        CCSprite* towerSpr = towerBtn->getChildByType<CCSprite>(0);
+        CCMenu* towerMenu = getChildByType<CCMenu>(1);
+        if(!towerMenu) return;
+        CCMenuItemSpriteExtra* towerBtn = towerMenu->getChildByType<CCMenuItemSpriteExtra>(0);
+        if(!towerBtn) return;
+
+        CCSprite* towerSpr = static_cast<CCSprite*>(towerBtn->getNormalImage());
+        if(!towerSpr) return;
         CCSprite* towerTextSpr = towerSpr->getChildByType<CCSprite>(0);
+        if(!towerTextSpr) return;
 
         towerSpr->setDisplayFrame(SFC->spriteFrameByName("GJL_secretDoor_001.png"_spr));
         towerSpr->setScale(1.1);
-        //towerSpr->setContentSize({99, 162});
+        // towerSpr->setContentSize({99, 162});
         towerTextSpr->setVisible(false);
 
         for(int i = 0; i < 3; i++) {
             auto node = towerSpr->getChildByType<CCParticleSystemQuad>(i);
+            if(!node) continue;
             //node->setPosition(ccp(node->getPositionX() - 1, node->getPositionY() + 7));
             node->setPosition(towerSpr->getScaledContentSize() / 2.2);
         }

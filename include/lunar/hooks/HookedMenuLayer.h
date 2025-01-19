@@ -12,6 +12,9 @@ class $modify(HookedMenuLayer, MenuLayer) {
     $override
     void onMoreGames(CCObject*);
 
+    // $override
+    // void onPlay(CCObject*);
+
     #ifdef DEBUG_ENABLED
     $override
     virtual void keyDown(cocos2d::enumKeyCodes);

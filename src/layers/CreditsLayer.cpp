@@ -63,7 +63,7 @@ void CreditsLayer::setupCreditsTab() {
     creditsLabel->setPosition(ccp(winSize.width / 2, m_bgSprite->getContentHeight()));
 
     auto capeUser = CreditNode::create("Capeling", "Mod Developer\nLevels", 70, 41, 12, 12, true, 18226543);
-    auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 28, 6, 83, 72, true, 10026833);
+    auto genaUser = CreditNode::create("GenaMorphosis", "Textures\nLevels", 467, 6, 83, 72, true, 10026833);
     auto toastUser = CreditNode::create("RealToastGD", "Levels\nHypercharged Remix", 339, 12, 75, 3, true, 26666582);
 
     //auto robtopUser = CreditNode::create("RobTop", "Levels", 4, 11, 3, 3, true, 71);
@@ -169,10 +169,12 @@ void CreditsLayer::setupDebugTab() {
     auto resetSave = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Save Popup", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
     auto resetOneTimeNotEnough = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Not Enough Dialogue", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
     auto resetEnoughCoins = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Enough Coins Dialogue", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
+    auto resetTimeReborn = CCMenuItemSpriteExtra::create(ButtonSprite::create("Reset Time Reborn Popup", 80, true, "bigFont.fnt", "GJ_button_04.png", 30.f, 0.4f), this, menu_selector(CreditsLayer::onResetGameVar));
 
     resetSave->setTag(50);
     resetOneTimeNotEnough->setTag(51);
     resetEnoughCoins->setTag(52);
+    resetTimeReborn->setTag(53);
 
     auto debugMenu = CCMenu::create();
     debugMenu->setLayout(AxisLayout::create(Axis::Row)->setGap(20.f));
@@ -180,6 +182,7 @@ void CreditsLayer::setupDebugTab() {
     debugMenu->addChild(resetSave);
     debugMenu->addChild(resetOneTimeNotEnough);
     debugMenu->addChild(resetEnoughCoins);
+    debugMenu->addChild(resetTimeReborn);
     
     debugMenu->updateLayout();
 
