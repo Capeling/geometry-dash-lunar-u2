@@ -52,6 +52,7 @@ void HookedAchievementManager::addManualAchievements() {
     AchievementManager::addAchievement("geometry.ach.lunar.vault02", "Bingo!", "Found the secret", "A secret is required", "icon_29", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault03", "Among the stars", "Found the secret", "A secret is required", "ship_02", 0);
     AchievementManager::addAchievement("geometry.ach.lunar.vault04", "What was that word again?", "Found the secret", "A secret is required", "icon_30", 0);
+    AchievementManager::addAchievement("geometry.ach.lunar.vault05", "Time and Space", "Found the secret", "A secret is required", "color_17", 0);
 
     AchievementManager::addAchievement("geometry.ach.lunar.percent01", "Tough Luck", "Died past 60% on Ultrasonic", "Die past 60% on Ultrasonic", "color2_15", 0);
 

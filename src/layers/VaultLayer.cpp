@@ -201,7 +201,7 @@ std::string VaultLayer::getMessage() {
     if(m_messageID == 0) {
         m_messageID = rand;
         m_messageIndex = 0;
-        std::string message = getThreadMessage(m_messageIndex, m_messageID);
+        std::string message = getThreadMessage(m_messageIndex, 10);
         if(message == "") message = getBasicMessage();
         m_messageIndex++;
         return message;
@@ -317,13 +317,31 @@ std::string VaultLayer::getThreadMessage(int index, int messageID) {
             case 3: m_messageID = 0; m_messageIndex = 0; return "";
         }
     }
+    if(messageID == 10 && !AM->isAchievementEarned("geometry.ach.lunar.vault05")) {
+        switch(index) {
+            case 0: return "Time and space... a thought I've had for a while";
+            case 1: return "Isn't it weird how both of them seem so close?";
+            case 2: return "Perhaps its just my feeling";
+            case 3: return "For they were made to be together";
+            case 4: return "From the very start";
+            case 5: return "But... something about time has been...";
+            case 6: return "Quite off lately";
+            case 7: return "It feels like its been years since I've been here";
+            case 8: return "But time doesn't seem to reflect that";
+            case 9: return "Is it broken?";
+            case 10: return "Is there something that could be done about it?";
+            case 11: return "All of these thoughts puzzle me";
+            case 12: return "Perhaps you could check what's up with it";
+            case 13: m_messageID = 0; m_messageIndex = 0; GameManager::get()->reportAchievementWithID("geometry.ach.lunar.vault05", 100, false); return "";
+        }
+    }
     m_messageID = 0;
     m_messageIndex = 0;
     return "";
 }
 
 std::string VaultLayer::getBasicMessage() {
-    int rand = std::rand() % 27 + 1;
+    int rand = std::rand() % 28 + 1;
     switch(rand) {
         case 1: return "It's you again...";
         case 2: return "Have you ever heard of personal space?";
@@ -352,6 +370,7 @@ std::string VaultLayer::getBasicMessage() {
         case 25: return "I'm starving... get it?";
         case 26: return "Every time I blink, I still see you";
         case 27: return "I haven't had a rest in a while";
+        case 28: return "This smell... you're still here, aren't you?";
         default: return "...";
     }
     return "";
