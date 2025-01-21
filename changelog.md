@@ -4,6 +4,7 @@
 - Updated Ancient Ruins
 - Removed some logs
 - Added Time Reborn popup
+- Added new dialogue and a new achievement
 ## v2.0.5
 - Updated for 2.207
 ## v2.0.4
