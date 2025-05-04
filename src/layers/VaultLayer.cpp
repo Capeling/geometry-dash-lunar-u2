@@ -45,32 +45,6 @@ bool VaultLayer::init() {
     auto backSpr = CCSprite::createWithSpriteFrameName("GJ_arrow_03_001.png");
     auto backBtn = CCMenuItemSpriteExtra::create(backSpr, this, menu_selector(VaultLayer::onClose));
 
-    /*m_throneSpr = CCSprite::createWithSpriteFrameName("GJL_lunarThrone_001.png"_spr);
-    m_throneSpr->setScale(0.25f);
-
-    m_throneBtn = CCMenuItemSpriteExtra::create(m_throneSpr, this, nullptr);
-    m_throneBtn->m_scaleMultiplier = 1.f;
-    m_throneBtn->m_colorEnabled = true;
-    m_throneBtn->m_colorDip = 100.f;
-
-
-    auto dict = CCDictionary::createWithContentsOfFileThreadSafe("crystalEffect.plist"_spr);
-
-    m_throneParticles = CCParticleSystemQuad::create();
-    m_throneParticles->initWithDictionary(dict, false);
-
-    m_throneParticles->setPosition(m_throneBtn->getPosition());
-
-    m_throneLabel = CCLabelBMFont::create("Throne\nRoom", "goldFont.fnt");
-    m_throneLabel->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
-    m_throneLabel->setPosition({0.f, 65.f});
-    m_throneLabel->setScale(0.5f);
-
-    m_throneMenu = CCMenu::create();
-    m_throneMenu->addChild(m_throneBtn);
-    m_throneMenu->addChild(m_throneLabel);
-    m_throneMenu->addChild(m_throneParticles);*/
-
     m_ruinLabel = CCLabelBMFont::create("Ancient\nRuins", "bigFont.fnt");
     m_ruinLabel->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
     m_ruinLabel->setPosition({0.5f, 37.f});
@@ -139,7 +113,8 @@ void VaultLayer::onRuin(CCObject*) {
     auto color = CCLayerColor::create({0, 0, 0, 255});
     addChild(color, 90);
     color->runAction(CCFadeIn::create(0.5f));
-    runAction(CCSequence::create(CCDelayTime::create(FMODAudioEngine::sharedEngine()->fadeOutMusic(0.5f, 0)), CCCallFunc::create(this, callfunc_selector(VaultLayer::playStep1)), 0));
+    FMODAudioEngine::sharedEngine()->fadeOutMusic(0.5f, 0);
+    runAction(CCSequence::create(CCDelayTime::create(.5f), CCCallFunc::create(this, callfunc_selector(VaultLayer::playStep1)), 0));
 }
 
 void VaultLayer::playStep1() {

@@ -1,11 +1,12 @@
 {
-	"geode": "4.2.0",
+	"geode": "4.4.0",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
-		"mac": "2.2074"
+		"mac": "2.2074",
+		"ios": "2.2074"
 	},
-	"version": "v2.0.6",
+	"version": "v2.0.7",
 	"id": "capeling.geometry-dash-lunar",
 	"name": "Geometry Dash: Lunar",
 	"developers": [
@@ -16,37 +17,37 @@
 	"description": "",
 	"resources": {
 		"files": [
-			"resources/particles/*.plist",
-			"resources/levels/*.txt",
-			"resources/songs/*.mp3",
-			"resources/songs/normal/Active.mp3",
-			"resources/songs/normal/Earthsplitter.mp3",
-			"resources/songs/normal/GroundZero.mp3",
-			"resources/songs/normal/Hypercharged.mp3",
-			"resources/songs/normal/Payback.mp3",
-			"resources/songs/normal/PowerGlove.mp3",
-			"resources/songs/normal/Reverie.mp3",
-			"resources/songs/normal/SpaceBattle.mp3",
-			"resources/songs/normal/ThunderZone.mp3",
-			"resources/songs/normal/Ultrasonic.mp3",
-			"resources/extra/jumpscareAudio.mp3",
-			"resources/icons/update2/*.png",
-			"resources/icons/update2/*.plist",
-			"resources/icons/update2/robot_02/*.png",
-			"resources/icons/update2/robot_02/*.plist",
-			"resources/icons/update2/robot_03/*.png",
-			"resources/icons/update2/robot_03/*.plist",
-			"resources/plat/sfx/*.ogg",
-			"resources/plat/songs/*.ogg"
+			"rsc/particles/*.plist",
+			"rsc/levels/*.txt",
+			"rsc/songs/*.mp3",
+			"rsc/songs/normal/Active.mp3",
+			"rsc/songs/normal/Earthsplitter.mp3",
+			"rsc/songs/normal/GroundZero.mp3",
+			"rsc/songs/normal/Hypercharged.mp3",
+			"rsc/songs/normal/Payback.mp3",
+			"rsc/songs/normal/PowerGlove.mp3",
+			"rsc/songs/normal/Reverie.mp3",
+			"rsc/songs/normal/SpaceBattle.mp3",
+			"rsc/songs/normal/ThunderZone.mp3",
+			"rsc/songs/normal/Ultrasonic.mp3",
+			"rsc/extra/jumpscareAudio.mp3",
+			"rsc/icons/update2/*.png",
+			"rsc/icons/update2/*.plist",
+			"rsc/icons/update2/robot_02/*.png",
+			"rsc/icons/update2/robot_02/*.plist",
+			"rsc/icons/update2/robot_03/*.png",
+			"rsc/icons/update2/robot_03/*.plist",
+			"rsc/plat/sfx/*.ogg",
+			"rsc/plat/songs/*.ogg"
 		],
 		"spritesheets": {
 			"LunarSheet": [
-				"resources/LunarSheet/*.png"
+				"rsc/LunarSheet/*.png"
 			]
 		},
 		"sprites": [
-			"resources/dialogue/*.png",
-			"resources/sprites/*.png"
+			"rsc/dialogue/*.png",
+			"rsc/sprites/*.png"
 		]
 	}
 }

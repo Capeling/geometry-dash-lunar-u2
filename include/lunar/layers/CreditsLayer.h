@@ -1,4 +1,5 @@
 #pragma once
+
 #include <Geode/Geode.hpp>
 
 class CreditsLayer : public geode::Popup<> {
@@ -27,7 +28,7 @@ protected:
     int m_tab = 0;
 
     int m_lastTab = 
-    #ifdef DEBUG_ENABLED 
+    #ifdef DEBUG_BUILD 
     2 
     #else 
     1 

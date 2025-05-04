@@ -1,4 +1,5 @@
 #pragma once
+
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 
@@ -15,7 +16,7 @@ class $modify(HookedMenuLayer, MenuLayer) {
     // $override
     // void onPlay(CCObject*);
 
-    #ifdef DEBUG_ENABLED
+    #ifdef DEBUG_BUILD
     $override
     virtual void keyDown(cocos2d::enumKeyCodes);
     #endif
